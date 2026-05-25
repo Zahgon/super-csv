@@ -101,419 +101,375 @@ import org.supercsv.quote.QuoteMode;
  * <strong>Tip:</strong>Create a CsvPreference instance for each writer instead of using predefined static preferences
  * in CsvPreference When writing in multi thread.
  * </p>
- * 
+ *
  * @author Kasper B. Graversen
  * @author James Bassett
  * @author Pietro Aragona
  */
 public final class CsvPreference {
-	
-	/**
-	 * Ready to use configuration that should cover 99% of all usages.
-	 */
-	public static final CsvPreference STANDARD_PREFERENCE = new CsvPreference.Builder('"', ',', "\r\n").build();
-	
-	/**
-	 * Ready to use configuration for Windows Excel exported CSV files.
-	 */
-	public static final CsvPreference EXCEL_PREFERENCE = new CsvPreference.Builder('"', ',', "\n").build();
-	
-	/**
-	 * Ready to use configuration for north European excel CSV files (columns are separated by ";" instead of ",")
-	 */
-	public static final CsvPreference EXCEL_NORTH_EUROPE_PREFERENCE = new CsvPreference.Builder('"', ';', "\n").build();
-	
-	/**
-	 * Ready to use configuration for tab-delimited files.
-	 */
-	public static final CsvPreference TAB_PREFERENCE = new CsvPreference.Builder('"', '\t', "\n").build();
-	
-	private final char quoteChar;
-	
-	private final int delimiterChar;
-	
-	private final String endOfLineSymbols;
-	
-	private final boolean surroundingSpacesNeedQuotes;
-	
-	private final boolean ignoreEmptyLines;
-	
-	private final CsvEncoder encoder;
-	
-	private final QuoteMode quoteMode;
-	
-	private final CommentMatcher commentMatcher;
-	
-	private int maxLinesPerRow = 0;
-	
-	private final EmptyColumnParsing emptyColumnParsing;
 
-	private final char quoteEscapeChar;
-	
-	/**
-	 * Constructs a new <tt>CsvPreference</tt> from a Builder.
-	 */
-	private CsvPreference(Builder builder) {
-		this.quoteChar = builder.quoteChar;
-		this.delimiterChar = builder.delimiterChar;
-		this.endOfLineSymbols = builder.endOfLineSymbols;
-		this.surroundingSpacesNeedQuotes = builder.surroundingSpacesNeedQuotes;
-		this.ignoreEmptyLines = builder.ignoreEmptyLines;
-		this.commentMatcher = builder.commentMatcher;
-		this.encoder = builder.encoder;
-		this.quoteMode = builder.quoteMode;
-		this.maxLinesPerRow = builder.maxLinesPerRow;
-		this.emptyColumnParsing = builder.emptyColumnParsing;
-		this.quoteEscapeChar = builder.quoteEscapeChar;
-	}
-	
-	/**
-	 * Returns the delimiter character
-	 * 
-	 * @return the delimiter character
-	 */
-	public int getDelimiterChar() {
-		return delimiterChar;
-	}
-	
-	/**
-	 * Returns the end of line symbols
-	 * 
-	 * @return the end of line symbols
-	 */
-	public String getEndOfLineSymbols() {
-		return endOfLineSymbols;
-	}
-	
-	/**
-	 * Returns the quote character
-	 * 
-	 * @return the quote character
-	 */
-	public char getQuoteChar() {
-		return quoteChar;
-	}
-	
-	/**
-	 * Returns the surroundingSpacesNeedQuotes flag.
-	 * 
-	 * @return the surroundingSpacesNeedQuotes flag
-	 */
-	public boolean isSurroundingSpacesNeedQuotes() {
-		return surroundingSpacesNeedQuotes;
-	}
-	
-	/**
-	 * Returns the ignoreEmptyLines flag.
-	 * 
-	 * @return the ignoreEmptyLines flag
-	 */
-	public boolean isIgnoreEmptyLines() {
-		return ignoreEmptyLines;
-	}
-	
-	/**
-	 * Returns the CSV encoder.
-	 * 
-	 * @return the CSV encoder
-	 */
-	public CsvEncoder getEncoder() {
-		return encoder;
-	}
-	
-	/**
-	 * Returns the quote mode.
-	 * 
-	 * @return the quote mode
-	 */
-	public QuoteMode getQuoteMode() {
-		return quoteMode;
-	}
-	
-	/**
-	 * Returns the comment matcher.
-	 * 
-	 * @return the comment matcher
-	 */
-	public CommentMatcher getCommentMatcher() {
-		return commentMatcher;
-	}
-	
-	/**
-	 * Returns the maximum number of lines a row can span.
-	 *
-	 * @return the maximum number of lines a row can span
-	 */
-	public int getMaxLinesPerRow() {
-		return maxLinesPerRow;
-	}
-	
-	/**
-	 * Returns the EmptyColumnParsing to determine whether empty String (i.e. "") should be read as empty string or as
-	 * null.
-	 * 
-	 * @return the emptyColumnParsing
-	 */
-	
-	public EmptyColumnParsing getEmptyColumnParsing() {
-		return emptyColumnParsing;
-	}
+    /**
+     * Ready to use configuration that should cover 99% of all usages.
+     */
+    public static final CsvPreference STANDARD_PREFERENCE = new CsvPreference.Builder('"', ',', "\r\n").build();
 
-	/**
-	 * Returns the quote escape character
-	 *
-	 * @return the quote escape character
-	 */
-	public char getQuoteEscapeChar() {
-		return quoteEscapeChar;
-	}
+    /**
+     * Ready to use configuration for Windows Excel exported CSV files.
+     */
+    public static final CsvPreference EXCEL_PREFERENCE = new CsvPreference.Builder('"', ',', "\n").build();
 
-	/**
-	 * Builds immutable <tt>CsvPreference</tt> instances. The builder pattern allows for additional preferences to be
-	 * added in the future.
-	 */
-	public static class Builder {
-		
-		private final char quoteChar;
-		
-		private final int delimiterChar;
-		
-		private final String endOfLineSymbols;
+    /**
+     * Ready to use configuration for north European excel CSV files (columns are separated by ";" instead of ",")
+     */
+    public static final CsvPreference EXCEL_NORTH_EUROPE_PREFERENCE = new CsvPreference.Builder('"', ';', "\n").build();
 
-		private boolean surroundingSpacesNeedQuotes = false;
-		
-		private boolean ignoreEmptyLines = true;
-		
-		private CsvEncoder encoder;
-		
-		private QuoteMode quoteMode;
-		
-		private CommentMatcher commentMatcher;
-		
-		private int maxLinesPerRow = 0;
-		
-		private EmptyColumnParsing emptyColumnParsing;
+    /**
+     * Ready to use configuration for tab-delimited files.
+     */
+    public static final CsvPreference TAB_PREFERENCE = new CsvPreference.Builder('"', '\t', "\n").build();
 
-		private char quoteEscapeChar;
-		
-		/**
-		 * Constructs a Builder with all of the values from an existing <tt>CsvPreference</tt> instance. Useful if you
-		 * want to base your preferences off one of the existing CsvPreference constants.
-		 * 
-		 * @param preference
-		 *            the existing preference
-		 */
-		public Builder(final CsvPreference preference) {
-			this.quoteChar = preference.quoteChar;
-			this.delimiterChar = preference.delimiterChar;
-			this.endOfLineSymbols = preference.endOfLineSymbols;
-			this.surroundingSpacesNeedQuotes = preference.surroundingSpacesNeedQuotes;
-			this.ignoreEmptyLines = preference.ignoreEmptyLines;
-			this.encoder = preference.encoder;
-			this.quoteMode = preference.quoteMode;
-			this.commentMatcher = preference.commentMatcher;
-			this.maxLinesPerRow = preference.maxLinesPerRow;
-			this.emptyColumnParsing = preference.emptyColumnParsing;
-			this.quoteEscapeChar = preference.quoteEscapeChar;
-		}
-		
-		/**
-		 * Constructs a Builder with the mandatory preference values.
-		 * 
-		 * @param quoteChar
-		 *            matching pairs of this character are used to escape columns containing the delimiter
-		 * @param delimiterChar
-		 *            the character separating each column
-		 * @param endOfLineSymbols
-		 *            one or more symbols terminating the line, e.g. "\n". Only used for writing.
-		 * @throws IllegalArgumentException
-		 *             if quoteChar and delimiterChar are the same character
-		 * @throws NullPointerException
-		 *             if endOfLineSymbols is null
-		 */
-		public Builder(final char quoteChar, final int delimiterChar, final String endOfLineSymbols) {
-			if( quoteChar == delimiterChar ) {
-				throw new IllegalArgumentException(String.format(
-					"quoteChar and delimiterChar must not be the same character: %c", quoteChar));
-			} else if( endOfLineSymbols == null ) {
-				throw new NullPointerException("endOfLineSymbols should not be null");
-			}
-			this.quoteChar = quoteChar;
-			this.delimiterChar = delimiterChar;
-			this.endOfLineSymbols = endOfLineSymbols;
+    private final char quoteChar;
 
-			// by default (RFC-spec) the quoteEscapeChar is the quoteChar
-			this.quoteEscapeChar = quoteChar;
-		}
-		
-		/**
-		 * Flag indicating whether spaces at the beginning or end of a cell should be ignored if they're not surrounded
-		 * by quotes (applicable to both reading and writing CSV). The default is <tt>false</tt>, as spaces
-		 * "are considered part of a field and should not be ignored" according to RFC 4180.
-		 * 
-		 * @since 2.0.0
-		 * @param surroundingSpacesNeedQuotes
-		 *            flag indicating whether spaces at the beginning or end of a cell should be ignored if they're not
-		 *            surrounded by quotes
-		 * @return the updated Builder
-		 */
-		public Builder surroundingSpacesNeedQuotes(final boolean surroundingSpacesNeedQuotes) {
-			this.surroundingSpacesNeedQuotes = surroundingSpacesNeedQuotes;
-			return this;
-		}
-		
-		/**
-		 * Flag indicating whether empty lines (i.e. containing only end of line symbols) should be ignored. The default
-		 * is <tt>true</tt>.
-		 * 
-		 * @since 2.2.1
-		 * @param ignoreEmptyLines
-		 *            flag indicating whether empty lines should be ignored
-		 * @return the updated Builder
-		 */
-		public Builder ignoreEmptyLines(final boolean ignoreEmptyLines) {
-			this.ignoreEmptyLines = ignoreEmptyLines;
-			return this;
-		}
-		
-		/**
-		 * Enables the skipping of comments. You can supply your own comment matcher or use one of the predefined ones:
-		 * {@link org.supercsv.comment.CommentStartsWith CommentStartsWith} or
-		 * {@link org.supercsv.comment.CommentMatches CommentMatches}
-		 * 
-		 * @since 2.1.0
-		 * @param commentMatcher
-		 *            the comment matcher to use
-		 * @return the updated Builder
-		 * @throws NullPointerException
-		 *             if commentMatcher is null
-		 */
-		public Builder skipComments(final CommentMatcher commentMatcher) {
-			if( commentMatcher == null ) {
-				throw new NullPointerException("commentMatcher should not be null");
-			}
-			this.commentMatcher = commentMatcher;
-			return this;
-		}
-		
-		/**
-		 * Uses a custom CsvEncoder to escape CSV for writing.
-		 * 
-		 * @since 2.1.0
-		 * @param encoder
-		 *            the custom encoder
-		 * @return the updated Builder
-		 * @throws NullPointerException
-		 *             if encoder is null
-		 */
-		public Builder useEncoder(final CsvEncoder encoder) {
-			if( encoder == null ) {
-				throw new NullPointerException("encoder should not be null");
-			}
-			this.encoder = encoder;
-			return this;
-		}
-		
-		/**
-		 * Uses a custom QuoteMode to determine if surrounding quotes should be applied when writing (only applicable if
-		 * a column doesn't contain any special characters and wouldn't otherwise be quoted). You can supply your own
-		 * quote mode or use one of the predefined ones: {@link org.supercsv.quote.AlwaysQuoteMode AlwaysQuoteMode} or
-		 * {@link org.supercsv.quote.ColumnQuoteMode ColumnQuoteMode}
-		 * 
-		 * @since 2.1.0
-		 * @param quoteMode
-		 *            the quote mode
-		 * @return the updated Builder
-		 * @throws NullPointerException
-		 *             if quoteMode is null
-		 */
-		public Builder useQuoteMode(final QuoteMode quoteMode) {
-			if( quoteMode == null ) {
-				throw new NullPointerException("quoteMode should not be null");
-			}
-			this.quoteMode = quoteMode;
-			return this;
-		}
-		
-		/**
-		 * The maximum number of lines that a row can span before an exception is thrown (only applicable when reading
-		 * CSV). This option allows CSV readers to fail fast when encountering CSV with mismatching quotes - the normal
-		 * behaviour would be to continue reading until the matching quote is found, which could potentially mean
-		 * reading the whole file (and exhausting all available memory). Zero or a negative value will disable this
-		 * option. The default is <tt>0</tt>.
-		 * 
-		 * @since 2.4.0
-		 * @param maxLinesPerRow
-		 *            the maximum number of lines a row can span before an exception is thrown
-		 * @return the updated Builder
-		 */
-		public Builder maxLinesPerRow(final int maxLinesPerRow) {
-			this.maxLinesPerRow = maxLinesPerRow;
-			return this;
-		}
-		
-		/**
-		 * Uses an EmptyColumnParsing to determine whether empty String (i.e. "") should be read as empty string instead as null.
-		 * The default is <tt>ParseEmptyColumnsAsNull</tt>.
-		 *
-		 * @since 2.4.1
-		 * @param emptyColumnParsing
-		 *            the emptyColumnParsing
-		 * @return the updated Builder
-		 */
-		public Builder setEmptyColumnParsing(final EmptyColumnParsing emptyColumnParsing) {
-			if( emptyColumnParsing == null ) {
-				throw new NullPointerException("emptyColumnParsing should not be null");
-			}
-			this.emptyColumnParsing = emptyColumnParsing;
-			return this;
-		}
+    private final int delimiterChar;
 
-		/**
-		 * Value indicating the character to use for escaping a quote char.  The default value is
-		 * the quote char (which is a double-quote <tt>"</tt> character by default).  This value
-		 * must not be the same as <tt>delimiterChar</tt>
-		 *
-		 * @since 2.5.0
-		 * @param quoteEscapeChar
-		 *            value indicating the character to use for escaping a quote character
-		 * @return the updated Builder
-		 */
-		public Builder setQuoteEscapeChar(final char quoteEscapeChar) {
-			this.quoteEscapeChar = quoteEscapeChar;
-			return this;
-		}
-		
-		/**
-		 * Builds the CsvPreference instance.
-		 * 
-		 * @return the immutable CsvPreference instance
-		 * @throws IllegalArgumentException
-		 *             if quoteEscapeChar and delimiterChar are the same character
-		 */
-		public CsvPreference build() {
-			
-			if( encoder == null ) {
-				encoder = new DefaultCsvEncoder();
-			}
-			
-			if( quoteMode == null ) {
-				quoteMode = new NormalQuoteMode();
-			}
-			
-			if( emptyColumnParsing == null ) {
-				emptyColumnParsing = EmptyColumnParsing.ParseEmptyColumnsAsNull;
-			}
+    private final String endOfLineSymbols;
 
-			if( quoteEscapeChar == delimiterChar ) {
-				throw new IllegalArgumentException(String.format(
-						"quoteEscapeChar and delimiterChar must not be the same character: %c",
-						quoteEscapeChar));
-			}
-			
-			return new CsvPreference(this);
-		}
-		
-	}
-	
+    private final boolean surroundingSpacesNeedQuotes;
+
+    private final boolean ignoreEmptyLines;
+
+    private final CsvEncoder encoder;
+
+    private final QuoteMode quoteMode;
+
+    private final CommentMatcher commentMatcher;
+
+    private int maxLinesPerRow = 0;
+
+    private final EmptyColumnParsing emptyColumnParsing;
+
+    private final char quoteEscapeChar;
+
+    /**
+     * Constructs a new <tt>CsvPreference</tt> from a Builder.
+     */
+    private CsvPreference(Builder builder) {
+        this.quoteChar = builder.quoteChar;
+        this.delimiterChar = builder.delimiterChar;
+        this.endOfLineSymbols = builder.endOfLineSymbols;
+        this.surroundingSpacesNeedQuotes = builder.surroundingSpacesNeedQuotes;
+        this.ignoreEmptyLines = builder.ignoreEmptyLines;
+        this.commentMatcher = builder.commentMatcher;
+        this.encoder = builder.encoder;
+        this.quoteMode = builder.quoteMode;
+        this.maxLinesPerRow = builder.maxLinesPerRow;
+        this.emptyColumnParsing = builder.emptyColumnParsing;
+        this.quoteEscapeChar = builder.quoteEscapeChar;
+    }
+
+    /**
+     * Returns the delimiter character
+     *
+     * @return the delimiter character
+     */
+    public int getDelimiterChar() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    /**
+     * Returns the end of line symbols
+     *
+     * @return the end of line symbols
+     */
+    public String getEndOfLineSymbols() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    /**
+     * Returns the quote character
+     *
+     * @return the quote character
+     */
+    public char getQuoteChar() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    /**
+     * Returns the surroundingSpacesNeedQuotes flag.
+     *
+     * @return the surroundingSpacesNeedQuotes flag
+     */
+    public boolean isSurroundingSpacesNeedQuotes() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    /**
+     * Returns the ignoreEmptyLines flag.
+     *
+     * @return the ignoreEmptyLines flag
+     */
+    public boolean isIgnoreEmptyLines() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    /**
+     * Returns the CSV encoder.
+     *
+     * @return the CSV encoder
+     */
+    public CsvEncoder getEncoder() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    /**
+     * Returns the quote mode.
+     *
+     * @return the quote mode
+     */
+    public QuoteMode getQuoteMode() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    /**
+     * Returns the comment matcher.
+     *
+     * @return the comment matcher
+     */
+    public CommentMatcher getCommentMatcher() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    /**
+     * Returns the maximum number of lines a row can span.
+     *
+     * @return the maximum number of lines a row can span
+     */
+    public int getMaxLinesPerRow() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    /**
+     * Returns the EmptyColumnParsing to determine whether empty String (i.e. "") should be read as empty string or as
+     * null.
+     *
+     * @return the emptyColumnParsing
+     */
+    public EmptyColumnParsing getEmptyColumnParsing() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    /**
+     * Returns the quote escape character
+     *
+     * @return the quote escape character
+     */
+    public char getQuoteEscapeChar() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    /**
+     * Builds immutable <tt>CsvPreference</tt> instances. The builder pattern allows for additional preferences to be
+     * added in the future.
+     */
+    public static class Builder {
+
+        private final char quoteChar;
+
+        private final int delimiterChar;
+
+        private final String endOfLineSymbols;
+
+        private boolean surroundingSpacesNeedQuotes = false;
+
+        private boolean ignoreEmptyLines = true;
+
+        private CsvEncoder encoder;
+
+        private QuoteMode quoteMode;
+
+        private CommentMatcher commentMatcher;
+
+        private int maxLinesPerRow = 0;
+
+        private EmptyColumnParsing emptyColumnParsing;
+
+        private char quoteEscapeChar;
+
+        /**
+         * Constructs a Builder with all of the values from an existing <tt>CsvPreference</tt> instance. Useful if you
+         * want to base your preferences off one of the existing CsvPreference constants.
+         *
+         * @param preference
+         *            the existing preference
+         */
+        public Builder(final CsvPreference preference) {
+            this.quoteChar = preference.quoteChar;
+            this.delimiterChar = preference.delimiterChar;
+            this.endOfLineSymbols = preference.endOfLineSymbols;
+            this.surroundingSpacesNeedQuotes = preference.surroundingSpacesNeedQuotes;
+            this.ignoreEmptyLines = preference.ignoreEmptyLines;
+            this.encoder = preference.encoder;
+            this.quoteMode = preference.quoteMode;
+            this.commentMatcher = preference.commentMatcher;
+            this.maxLinesPerRow = preference.maxLinesPerRow;
+            this.emptyColumnParsing = preference.emptyColumnParsing;
+            this.quoteEscapeChar = preference.quoteEscapeChar;
+        }
+
+        /**
+         * Constructs a Builder with the mandatory preference values.
+         *
+         * @param quoteChar
+         *            matching pairs of this character are used to escape columns containing the delimiter
+         * @param delimiterChar
+         *            the character separating each column
+         * @param endOfLineSymbols
+         *            one or more symbols terminating the line, e.g. "\n". Only used for writing.
+         * @throws IllegalArgumentException
+         *             if quoteChar and delimiterChar are the same character
+         * @throws NullPointerException
+         *             if endOfLineSymbols is null
+         */
+        public Builder(final char quoteChar, final int delimiterChar, final String endOfLineSymbols) {
+            if (quoteChar == delimiterChar) {
+                throw new IllegalArgumentException(String.format("quoteChar and delimiterChar must not be the same character: %c", quoteChar));
+            } else if (endOfLineSymbols == null) {
+                throw new NullPointerException("endOfLineSymbols should not be null");
+            }
+            this.quoteChar = quoteChar;
+            this.delimiterChar = delimiterChar;
+            this.endOfLineSymbols = endOfLineSymbols;
+            // by default (RFC-spec) the quoteEscapeChar is the quoteChar
+            this.quoteEscapeChar = quoteChar;
+        }
+
+        /**
+         * Flag indicating whether spaces at the beginning or end of a cell should be ignored if they're not surrounded
+         * by quotes (applicable to both reading and writing CSV). The default is <tt>false</tt>, as spaces
+         * "are considered part of a field and should not be ignored" according to RFC 4180.
+         *
+         * @since 2.0.0
+         * @param surroundingSpacesNeedQuotes
+         *            flag indicating whether spaces at the beginning or end of a cell should be ignored if they're not
+         *            surrounded by quotes
+         * @return the updated Builder
+         */
+        public Builder surroundingSpacesNeedQuotes(final boolean surroundingSpacesNeedQuotes) {
+            throw new UnsupportedOperationException("STUB: not implemented");
+        }
+
+        /**
+         * Flag indicating whether empty lines (i.e. containing only end of line symbols) should be ignored. The default
+         * is <tt>true</tt>.
+         *
+         * @since 2.2.1
+         * @param ignoreEmptyLines
+         *            flag indicating whether empty lines should be ignored
+         * @return the updated Builder
+         */
+        public Builder ignoreEmptyLines(final boolean ignoreEmptyLines) {
+            throw new UnsupportedOperationException("STUB: not implemented");
+        }
+
+        /**
+         * Enables the skipping of comments. You can supply your own comment matcher or use one of the predefined ones:
+         * {@link org.supercsv.comment.CommentStartsWith CommentStartsWith} or
+         * {@link org.supercsv.comment.CommentMatches CommentMatches}
+         *
+         * @since 2.1.0
+         * @param commentMatcher
+         *            the comment matcher to use
+         * @return the updated Builder
+         * @throws NullPointerException
+         *             if commentMatcher is null
+         */
+        public Builder skipComments(final CommentMatcher commentMatcher) {
+            throw new UnsupportedOperationException("STUB: not implemented");
+        }
+
+        /**
+         * Uses a custom CsvEncoder to escape CSV for writing.
+         *
+         * @since 2.1.0
+         * @param encoder
+         *            the custom encoder
+         * @return the updated Builder
+         * @throws NullPointerException
+         *             if encoder is null
+         */
+        public Builder useEncoder(final CsvEncoder encoder) {
+            throw new UnsupportedOperationException("STUB: not implemented");
+        }
+
+        /**
+         * Uses a custom QuoteMode to determine if surrounding quotes should be applied when writing (only applicable if
+         * a column doesn't contain any special characters and wouldn't otherwise be quoted). You can supply your own
+         * quote mode or use one of the predefined ones: {@link org.supercsv.quote.AlwaysQuoteMode AlwaysQuoteMode} or
+         * {@link org.supercsv.quote.ColumnQuoteMode ColumnQuoteMode}
+         *
+         * @since 2.1.0
+         * @param quoteMode
+         *            the quote mode
+         * @return the updated Builder
+         * @throws NullPointerException
+         *             if quoteMode is null
+         */
+        public Builder useQuoteMode(final QuoteMode quoteMode) {
+            throw new UnsupportedOperationException("STUB: not implemented");
+        }
+
+        /**
+         * The maximum number of lines that a row can span before an exception is thrown (only applicable when reading
+         * CSV). This option allows CSV readers to fail fast when encountering CSV with mismatching quotes - the normal
+         * behaviour would be to continue reading until the matching quote is found, which could potentially mean
+         * reading the whole file (and exhausting all available memory). Zero or a negative value will disable this
+         * option. The default is <tt>0</tt>.
+         *
+         * @since 2.4.0
+         * @param maxLinesPerRow
+         *            the maximum number of lines a row can span before an exception is thrown
+         * @return the updated Builder
+         */
+        public Builder maxLinesPerRow(final int maxLinesPerRow) {
+            throw new UnsupportedOperationException("STUB: not implemented");
+        }
+
+        /**
+         * Uses an EmptyColumnParsing to determine whether empty String (i.e. "") should be read as empty string instead as null.
+         * The default is <tt>ParseEmptyColumnsAsNull</tt>.
+         *
+         * @since 2.4.1
+         * @param emptyColumnParsing
+         *            the emptyColumnParsing
+         * @return the updated Builder
+         */
+        public Builder setEmptyColumnParsing(final EmptyColumnParsing emptyColumnParsing) {
+            throw new UnsupportedOperationException("STUB: not implemented");
+        }
+
+        /**
+         * Value indicating the character to use for escaping a quote char.  The default value is
+         * the quote char (which is a double-quote <tt>"</tt> character by default).  This value
+         * must not be the same as <tt>delimiterChar</tt>
+         *
+         * @since 2.5.0
+         * @param quoteEscapeChar
+         *            value indicating the character to use for escaping a quote character
+         * @return the updated Builder
+         */
+        public Builder setQuoteEscapeChar(final char quoteEscapeChar) {
+            throw new UnsupportedOperationException("STUB: not implemented");
+        }
+
+        /**
+         * Builds the CsvPreference instance.
+         *
+         * @return the immutable CsvPreference instance
+         * @throws IllegalArgumentException
+         *             if quoteEscapeChar and delimiterChar are the same character
+         */
+        public CsvPreference build() {
+            throw new UnsupportedOperationException("STUB: not implemented");
+        }
+    }
 }

@@ -20,7 +20,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
-
 import org.supercsv.cellprocessor.ift.DateCellProcessor;
 
 /**
@@ -37,62 +36,59 @@ import org.supercsv.cellprocessor.ift.DateCellProcessor;
  * <p>
  * If you don't wish to use the default Locale when parsing Dates (your data is formatted for a different Locale), then
  * use the constructor that accepts a Locale.
- * 
+ *
  * @author Pietro Aragona
  * @since 2.4.1
  */
 public class ParseSqlTime extends ParseDateTimeAbstract {
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	public ParseSqlTime(String dateFormat, boolean lenient, DateCellProcessor next) {
-		super(dateFormat, lenient, next);
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	public ParseSqlTime(String dateFormat, boolean lenient, Locale locale, DateCellProcessor next) {
-		super(dateFormat, lenient, locale, next);
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	public ParseSqlTime(String dateFormat, boolean lenient, Locale locale) {
-		super(dateFormat, lenient, locale);
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	public ParseSqlTime(String dateFormat, boolean lenient) {
-		super(dateFormat, lenient);
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	public ParseSqlTime(String dateFormat, DateCellProcessor next) {
-		super(dateFormat, next);
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	public ParseSqlTime(String dateFormat) {
-		super(dateFormat);
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	protected Object parseValue(Object value) throws ParseException {
-		final Date date = formatter.parse((String) value);
-		final Time result = new Time(date.getTime());
-		return result;
-	}
-	
+
+    /**
+     * {@inheritDoc}
+     */
+    public ParseSqlTime(String dateFormat, boolean lenient, DateCellProcessor next) {
+        super(dateFormat, lenient, next);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public ParseSqlTime(String dateFormat, boolean lenient, Locale locale, DateCellProcessor next) {
+        super(dateFormat, lenient, locale, next);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public ParseSqlTime(String dateFormat, boolean lenient, Locale locale) {
+        super(dateFormat, lenient, locale);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public ParseSqlTime(String dateFormat, boolean lenient) {
+        super(dateFormat, lenient);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public ParseSqlTime(String dateFormat, DateCellProcessor next) {
+        super(dateFormat, next);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public ParseSqlTime(String dateFormat) {
+        super(dateFormat);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected Object parseValue(Object value) throws ParseException {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

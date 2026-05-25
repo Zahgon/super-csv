@@ -24,7 +24,7 @@ import org.supercsv.cellprocessor.ift.CellProcessor;
 
 /**
  * Converts a String to a Joda LocalDate.
- * 
+ *
  * <p>
  * For constructors using DateTimeFormatter, refer to the following Joda
  * classes:
@@ -37,76 +37,74 @@ import org.supercsv.cellprocessor.ift.CellProcessor;
  * <p>
  * For constructors using date format Strings, refer to {@link DateTimeFormat}
  * for example formats.
- * 
+ *
  * @since 2.3.0
  * @author James Bassett
  */
 public class ParseLocalDate extends AbstractJodaParsingProcessor<LocalDate> {
 
-	/**
-	 * Constructs a new <tt>ParseLocalDate</tt> processor, which parses a String
-	 * as a Joda LocalDate.
-	 */
-	public ParseLocalDate() {
-	}
+    /**
+     * Constructs a new <tt>ParseLocalDate</tt> processor, which parses a String
+     * as a Joda LocalDate.
+     */
+    public ParseLocalDate() {
+    }
 
-	/**
-	 * Constructs a new <tt>ParseLocalDate</tt> processor, which parses a String
-	 * as a Joda LocalDate, then calls the next processor in the chain.
-	 * 
-	 * @param next
-	 *            the next processor in the chain
-	 * @throws NullPointerException
-	 *             if next is null
-	 */
-	public ParseLocalDate(final CellProcessor next) {
-		super(next);
-	}
+    /**
+     * Constructs a new <tt>ParseLocalDate</tt> processor, which parses a String
+     * as a Joda LocalDate, then calls the next processor in the chain.
+     *
+     * @param next
+     *            the next processor in the chain
+     * @throws NullPointerException
+     *             if next is null
+     */
+    public ParseLocalDate(final CellProcessor next) {
+        super(next);
+    }
 
-	/**
-	 * Constructs a new <tt>ParseLocalDate</tt> processor, which parses a String
-	 * as a Joda LocalDate using the supplied formatter.
-	 * 
-	 * @param formatter
-	 *            the formatter used for parsing
-	 * @throws NullPointerException
-	 *             if formatter is null
-	 */
-	public ParseLocalDate(final DateTimeFormatter formatter) {
-		super(formatter);
-	}
+    /**
+     * Constructs a new <tt>ParseLocalDate</tt> processor, which parses a String
+     * as a Joda LocalDate using the supplied formatter.
+     *
+     * @param formatter
+     *            the formatter used for parsing
+     * @throws NullPointerException
+     *             if formatter is null
+     */
+    public ParseLocalDate(final DateTimeFormatter formatter) {
+        super(formatter);
+    }
 
-	/**
-	 * Constructs a new <tt>ParseLocalDate</tt> processor, which parses a String
-	 * as a Joda LocalDate using the supplied formatter, then calls the next
-	 * processor in the chain.
-	 * 
-	 * @param formatter
-	 *            the formatter used for parsing
-	 * @param next
-	 *            the next processor in the chain
-	 * @throws NullPointerException
-	 *             if formatter or next is null
-	 */
-	public ParseLocalDate(final DateTimeFormatter formatter,
-			final CellProcessor next) {
-		super(formatter, next);
-	}
+    /**
+     * Constructs a new <tt>ParseLocalDate</tt> processor, which parses a String
+     * as a Joda LocalDate using the supplied formatter, then calls the next
+     * processor in the chain.
+     *
+     * @param formatter
+     *            the formatter used for parsing
+     * @param next
+     *            the next processor in the chain
+     * @throws NullPointerException
+     *             if formatter or next is null
+     */
+    public ParseLocalDate(final DateTimeFormatter formatter, final CellProcessor next) {
+        super(formatter, next);
+    }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	protected LocalDate parse(final String string) {
-		return LocalDate.parse(string);
-	}
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected LocalDate parse(final String string) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	protected LocalDate parse(final String string,
-			final DateTimeFormatter formatter) {
-		return LocalDate.parse(string, formatter);
-	}
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected LocalDate parse(final String string, final DateTimeFormatter formatter) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

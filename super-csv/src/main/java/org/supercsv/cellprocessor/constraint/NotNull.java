@@ -34,42 +34,38 @@ import org.supercsv.util.CsvContext;
  * <p>
  * If you apply other processors to the column, you can safely omit this processor as all other processors should do a
  * null-check on its input.
- * 
+ *
  * @since 1.50
  * @author Dominique De Vito
  */
-public class NotNull extends CellProcessorAdaptor implements BoolCellProcessor, DateCellProcessor, DoubleCellProcessor,
-	LongCellProcessor, StringCellProcessor {
-	
-	/**
-	 * Constructs a new <tt>NotNull</tt> which ensures that the input is not <tt>null</tt>.
-	 */
-	public NotNull() {
-		super();
-	}
-	
-	/**
-	 * Constructs a new <tt>NotNull</tt> which ensures that the input is not <tt>null</tt>, then calls the next
-	 * processor in the chain. All other processor should check for <tt>null</tt> inputs, so this constructor is not
-	 * typically required.
-	 * 
-	 * @param next
-	 *            the next processor in the chain
-	 */
-	public NotNull(final CellProcessor next) {
-		super(next);
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @throws SuperCsvCellProcessorException
-	 *             if value is null
-	 */
-	public Object execute(final Object value, final CsvContext context) {
-		if (value == null){
-			throw new SuperCsvConstraintViolationException("null value encountered", context, this);
-		}
-		return next.execute(value, context);
-	}
+public class NotNull extends CellProcessorAdaptor implements BoolCellProcessor, DateCellProcessor, DoubleCellProcessor, LongCellProcessor, StringCellProcessor {
+
+    /**
+     * Constructs a new <tt>NotNull</tt> which ensures that the input is not <tt>null</tt>.
+     */
+    public NotNull() {
+        super();
+    }
+
+    /**
+     * Constructs a new <tt>NotNull</tt> which ensures that the input is not <tt>null</tt>, then calls the next
+     * processor in the chain. All other processor should check for <tt>null</tt> inputs, so this constructor is not
+     * typically required.
+     *
+     * @param next
+     *            the next processor in the chain
+     */
+    public NotNull(final CellProcessor next) {
+        super(next);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @throws SuperCsvCellProcessorException
+     *             if value is null
+     */
+    public Object execute(final Object value, final CsvContext context) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

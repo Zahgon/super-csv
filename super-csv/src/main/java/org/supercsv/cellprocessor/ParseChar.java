@@ -22,60 +22,39 @@ import org.supercsv.util.CsvContext;
 
 /**
  * Converts a String to a Character. If the String has a {@literal length > 1}, then an Exception is thrown.
- * 
+ *
  * @since 1.10
  * @author Kasper B. Graversen
  */
 public class ParseChar extends CellProcessorAdaptor implements StringCellProcessor {
-	
-	/**
-	 * Constructs a new <tt>ParseChar</tt> processor, which converts a String to a Character.
-	 */
-	public ParseChar() {
-		super();
-	}
-	
-	/**
-	 * Constructs a new <tt>ParseChar</tt> processor, which converts a String to a Character, then calls the next
-	 * processor in the chain.
-	 * 
-	 * @param next
-	 *            the next processor in the chain
-	 * @throws NullPointerException
-	 *             if next is null
-	 */
-	public ParseChar(final DoubleCellProcessor next) {
-		super(next);
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @throws SuperCsvCellProcessorException
-	 *             if value is null, isn't a Character or String, or is a String of multiple characters
-	 */
-	public Object execute(final Object value, final CsvContext context) {
-		validateInputNotNull(value, context);
-		
-		final Character result;
-		if( value instanceof Character ) {
-			result = (Character) value;
-		} else if( value instanceof String ) {
-			final String stringValue = (String) value;
-			if( stringValue.length() == 1 ) {
-				result = Character.valueOf(stringValue.charAt(0));
-			} else {
-				throw new SuperCsvCellProcessorException(String.format(
-					"'%s' cannot be parsed as a char as it is a String longer than 1 character", stringValue), context,
-					this);
-			}
-		} else {
-			final String actualClassName = value.getClass().getName();
-			throw new SuperCsvCellProcessorException(String.format(
-				"the input value should be of type Character or String but is of type %s", actualClassName), context,
-				this);
-		}
-		
-		return next.execute(result, context);
-	}
+
+    /**
+     * Constructs a new <tt>ParseChar</tt> processor, which converts a String to a Character.
+     */
+    public ParseChar() {
+        super();
+    }
+
+    /**
+     * Constructs a new <tt>ParseChar</tt> processor, which converts a String to a Character, then calls the next
+     * processor in the chain.
+     *
+     * @param next
+     *            the next processor in the chain
+     * @throws NullPointerException
+     *             if next is null
+     */
+    public ParseChar(final DoubleCellProcessor next) {
+        super(next);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @throws SuperCsvCellProcessorException
+     *             if value is null, isn't a Character or String, or is a String of multiple characters
+     */
+    public Object execute(final Object value, final CsvContext context) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

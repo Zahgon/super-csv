@@ -17,7 +17,6 @@ package org.supercsv.cellprocessor.time;
 
 import java.time.Duration;
 import java.time.format.DateTimeParseException;
-
 import org.supercsv.cellprocessor.CellProcessorAdaptor;
 import org.supercsv.cellprocessor.ift.CellProcessor;
 import org.supercsv.cellprocessor.ift.StringCellProcessor;
@@ -36,41 +35,29 @@ import org.supercsv.util.CsvContext;
  */
 public class ParseDuration extends CellProcessorAdaptor implements StringCellProcessor {
 
-	/**
-	 * Constructs a new <tt>ParseDuration</tt> processor, which parses a String
-	 * as a Duration.
-	 */
-	public ParseDuration() {
-	}
+    /**
+     * Constructs a new <tt>ParseDuration</tt> processor, which parses a String
+     * as a Duration.
+     */
+    public ParseDuration() {
+    }
 
-	/**
-	 * Constructs a new <tt>ParseDuration</tt> processor, which parses a String
-	 * as a Duration, then calls the next processor in the chain.
-	 *
-	 * @param next the next processor in the chain
-	 */
-	public ParseDuration(final CellProcessor next) {
-		super(next);
-	}
+    /**
+     * Constructs a new <tt>ParseDuration</tt> processor, which parses a String
+     * as a Duration, then calls the next processor in the chain.
+     *
+     * @param next the next processor in the chain
+     */
+    public ParseDuration(final CellProcessor next) {
+        super(next);
+    }
 
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @throws SuperCsvCellProcessorException if value is null or is not a String
-	 */
-	public Object execute(final Object value, final CsvContext context) {
-		validateInputNotNull(value, context);
-		if( !(value instanceof String) ) {
-			throw new SuperCsvCellProcessorException(String.class, value, context, this);
-		}
-		final Duration result;
-		try {
-			result = Duration.parse((String) value);
-		}
-		catch(DateTimeParseException e) {
-			throw new SuperCsvCellProcessorException("Failed to parse value as a Duration", context, this, e);
-		}
-		return next.execute(result, context);
-	}
-
+    /**
+     * {@inheritDoc}
+     *
+     * @throws SuperCsvCellProcessorException if value is null or is not a String
+     */
+    public Object execute(final Object value, final CsvContext context) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

@@ -16,7 +16,6 @@
 package org.supercsv.cellprocessor.joda;
 
 import java.util.Locale;
-
 import org.joda.time.LocalTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
@@ -26,7 +25,7 @@ import org.supercsv.cellprocessor.ift.CellProcessor;
 
 /**
  * Converts a Joda LocalTime to a String.
- * 
+ *
  * <p>
  * For constructors using DateTimeFormatter, refer to the following Joda
  * classes:
@@ -39,152 +38,147 @@ import org.supercsv.cellprocessor.ift.CellProcessor;
  * <p>
  * For constructors using date format Strings, refer to {@link DateTimeFormat}
  * for example formats.
- * 
+ *
  * @since 2.3.0
  * @author James Bassett
  */
 public class FmtLocalTime extends AbstractJodaFormattingProcessor<LocalTime> {
 
-	private static final Class<LocalTime> JODA_CLASS = LocalTime.class;
+    private static final Class<LocalTime> JODA_CLASS = LocalTime.class;
 
-	/**
-	 * Constructs a new <tt>FmtLocalTime</tt> processor, which formats a Joda
-	 * LocalTime as a String.
-	 */
-	public FmtLocalTime() {
-		super(JODA_CLASS);
-	}
+    /**
+     * Constructs a new <tt>FmtLocalTime</tt> processor, which formats a Joda
+     * LocalTime as a String.
+     */
+    public FmtLocalTime() {
+        super(JODA_CLASS);
+    }
 
-	/**
-	 * Constructs a new <tt>FmtLocalTime</tt> processor, which formats a Joda
-	 * LocalTime as a String, then calls the next processor in the chain.
-	 * 
-	 * @param next
-	 *            next processor in the chain
-	 * @throws NullPointerException
-	 *             if next is null
-	 */
-	public FmtLocalTime(final CellProcessor next) {
-		super(JODA_CLASS, next);
-	}
+    /**
+     * Constructs a new <tt>FmtLocalTime</tt> processor, which formats a Joda
+     * LocalTime as a String, then calls the next processor in the chain.
+     *
+     * @param next
+     *            next processor in the chain
+     * @throws NullPointerException
+     *             if next is null
+     */
+    public FmtLocalTime(final CellProcessor next) {
+        super(JODA_CLASS, next);
+    }
 
-	/**
-	 * Constructs a new <tt>FmtLocalTime</tt> processor, which formats a Joda
-	 * LocalTime as a String using the supplied formatter.
-	 * 
-	 * @param formatter
-	 *            the formatter to use
-	 * @throws NullPointerException
-	 *             if formatter is null
-	 */
-	public FmtLocalTime(final DateTimeFormatter formatter) {
-		super(JODA_CLASS, formatter);
-	}
+    /**
+     * Constructs a new <tt>FmtLocalTime</tt> processor, which formats a Joda
+     * LocalTime as a String using the supplied formatter.
+     *
+     * @param formatter
+     *            the formatter to use
+     * @throws NullPointerException
+     *             if formatter is null
+     */
+    public FmtLocalTime(final DateTimeFormatter formatter) {
+        super(JODA_CLASS, formatter);
+    }
 
-	/**
-	 * Constructs a new <tt>FmtLocalTime</tt> processor, which formats a Joda
-	 * LocalTime as a String using the supplied formatter, then calls the next
-	 * processor in the chain.
-	 * 
-	 * @param formatter
-	 *            the formatter to use
-	 * @param next
-	 *            the next processor in the chain
-	 * @throws NullPointerException
-	 *             if formatter or next is null
-	 */
-	public FmtLocalTime(final DateTimeFormatter formatter,
-			final CellProcessor next) {
-		super(JODA_CLASS, formatter, next);
-	}
+    /**
+     * Constructs a new <tt>FmtLocalTime</tt> processor, which formats a Joda
+     * LocalTime as a String using the supplied formatter, then calls the next
+     * processor in the chain.
+     *
+     * @param formatter
+     *            the formatter to use
+     * @param next
+     *            the next processor in the chain
+     * @throws NullPointerException
+     *             if formatter or next is null
+     */
+    public FmtLocalTime(final DateTimeFormatter formatter, final CellProcessor next) {
+        super(JODA_CLASS, formatter, next);
+    }
 
-	/**
-	 * Constructs a new <tt>FmtLocalTime</tt> processor, which formats a Joda
-	 * LocalTime as a String using the supplied pattern and the default locale.
-	 * 
-	 * @param pattern
-	 *            the pattern to use
-	 * @throws NullPointerException
-	 *             if pattern is null
-	 */
-	public FmtLocalTime(final String pattern) {
-		super(JODA_CLASS, pattern);
-	}
+    /**
+     * Constructs a new <tt>FmtLocalTime</tt> processor, which formats a Joda
+     * LocalTime as a String using the supplied pattern and the default locale.
+     *
+     * @param pattern
+     *            the pattern to use
+     * @throws NullPointerException
+     *             if pattern is null
+     */
+    public FmtLocalTime(final String pattern) {
+        super(JODA_CLASS, pattern);
+    }
 
-	/**
-	 * Constructs a new <tt>FmtLocalTime</tt> processor, which formats a Joda
-	 * LocalTime as a String using the supplied pattern and the default locale,
-	 * then calls the next processor in the chain.
-	 * 
-	 * @param pattern
-	 *            the pattern to use
-	 * @param next
-	 *            the next processor in the chain
-	 * @throws NullPointerException
-	 *             if pattern or next is null
-	 */
-	public FmtLocalTime(final String pattern, final CellProcessor next) {
-		super(JODA_CLASS, pattern, next);
-	}
+    /**
+     * Constructs a new <tt>FmtLocalTime</tt> processor, which formats a Joda
+     * LocalTime as a String using the supplied pattern and the default locale,
+     * then calls the next processor in the chain.
+     *
+     * @param pattern
+     *            the pattern to use
+     * @param next
+     *            the next processor in the chain
+     * @throws NullPointerException
+     *             if pattern or next is null
+     */
+    public FmtLocalTime(final String pattern, final CellProcessor next) {
+        super(JODA_CLASS, pattern, next);
+    }
 
-	/**
-	 * Constructs a new <tt>FmtLocalTime</tt> processor, which formats a Joda
-	 * LocalTime as a String using the supplied pattern and the locale.
-	 * 
-	 * @param pattern
-	 *            the pattern to use
-	 * @param locale
-	 *            the locale to use (default used if <tt>null</tt>)
-	 * @throws NullPointerException
-	 *             if pattern is null
-	 */
-	public FmtLocalTime(final String pattern, final Locale locale) {
-		super(JODA_CLASS, pattern, locale);
-	}
+    /**
+     * Constructs a new <tt>FmtLocalTime</tt> processor, which formats a Joda
+     * LocalTime as a String using the supplied pattern and the locale.
+     *
+     * @param pattern
+     *            the pattern to use
+     * @param locale
+     *            the locale to use (default used if <tt>null</tt>)
+     * @throws NullPointerException
+     *             if pattern is null
+     */
+    public FmtLocalTime(final String pattern, final Locale locale) {
+        super(JODA_CLASS, pattern, locale);
+    }
 
-	/**
-	 * Constructs a new <tt>FmtLocalTime</tt> processor, which formats a Joda
-	 * LocalTime as a String using the supplied pattern and the locale, then
-	 * calls the next processor in the chain.
-	 * 
-	 * @param pattern
-	 *            the pattern to use
-	 * @param locale
-	 *            the locale to use (default used if <tt>null</tt>)
-	 * @param next
-	 *            the next processor in the chain
-	 * @throws NullPointerException
-	 *             if pattern or next is null
-	 */
-	public FmtLocalTime(final String pattern, final Locale locale,
-			final CellProcessor next) {
-		super(JODA_CLASS, pattern, locale, next);
-	}
+    /**
+     * Constructs a new <tt>FmtLocalTime</tt> processor, which formats a Joda
+     * LocalTime as a String using the supplied pattern and the locale, then
+     * calls the next processor in the chain.
+     *
+     * @param pattern
+     *            the pattern to use
+     * @param locale
+     *            the locale to use (default used if <tt>null</tt>)
+     * @param next
+     *            the next processor in the chain
+     * @throws NullPointerException
+     *             if pattern or next is null
+     */
+    public FmtLocalTime(final String pattern, final Locale locale, final CellProcessor next) {
+        super(JODA_CLASS, pattern, locale, next);
+    }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	protected String format(final LocalTime jodaType,
-			final DateTimeFormatter formatter) {
-		return jodaType.toString(formatter);
-	}
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected String format(final LocalTime jodaType, final DateTimeFormatter formatter) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	protected String format(final LocalTime jodaType, final String pattern,
-			final Locale locale) {
-		return jodaType.toString(pattern, locale);
-	}
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected String format(final LocalTime jodaType, final String pattern, final Locale locale) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	protected String format(final LocalTime jodaType) {
-		return jodaType.toString();
-	}
-
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected String format(final LocalTime jodaType) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

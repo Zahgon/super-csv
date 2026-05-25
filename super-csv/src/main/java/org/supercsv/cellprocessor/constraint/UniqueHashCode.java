@@ -17,7 +17,6 @@ package org.supercsv.cellprocessor.constraint;
 
 import java.util.HashSet;
 import java.util.Set;
-
 import org.supercsv.cellprocessor.CellProcessorAdaptor;
 import org.supercsv.cellprocessor.ift.CellProcessor;
 import org.supercsv.exception.SuperCsvCellProcessorException;
@@ -32,52 +31,44 @@ import org.supercsv.util.CsvContext;
  * hashcodes rather than storing references to all encountered objects. The tradeoff being possible false positives.
  * <p>
  * Prior to v1.50 this class was named <tt>Unique</tt> but has been renamed to clarify its inner workings.
- * 
+ *
  * @author Kasper B. Graversen
  * @author Dominique De Vito
  * @author James Bassett
  */
 public class UniqueHashCode extends CellProcessorAdaptor {
-	
-	private final Set<Integer> uniqueSet = new HashSet<Integer>();
-	
-	/**
-	 * Constructs a new <tt>UniqueHashCode</tt> processor, which ensures that all rows in a column are unique.
-	 */
-	public UniqueHashCode() {
-		super();
-	}
-	
-	/**
-	 * Constructs a new <tt>UniqueHashCode</tt> processor, which ensures that all rows in a column are unique, then
-	 * calls the next processor in the chain.
-	 * 
-	 * @param next
-	 *            the next processor in the chain
-	 * @throws NullPointerException
-	 *             if next is null
-	 */
-	public UniqueHashCode(final CellProcessor next) {
-		super(next);
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @throws SuperCsvCellProcessorException
-	 *             if value is null
-	 * @throws SuperCsvConstraintViolationException
-	 *             if a non-unique value is encountered
-	 */
-	public Object execute(final Object value, final CsvContext context) {
-		validateInputNotNull(value, context);
-		
-		int hash = value.hashCode();
-		if( !uniqueSet.add(hash) ) {
-			throw new SuperCsvConstraintViolationException(
-				String.format("duplicate value '%s' encountered with hashcode %d", value, hash), context, this);
-		}
-		
-		return next.execute(value, context);
-	}
+
+    private final Set<Integer> uniqueSet = new HashSet<Integer>();
+
+    /**
+     * Constructs a new <tt>UniqueHashCode</tt> processor, which ensures that all rows in a column are unique.
+     */
+    public UniqueHashCode() {
+        super();
+    }
+
+    /**
+     * Constructs a new <tt>UniqueHashCode</tt> processor, which ensures that all rows in a column are unique, then
+     * calls the next processor in the chain.
+     *
+     * @param next
+     *            the next processor in the chain
+     * @throws NullPointerException
+     *             if next is null
+     */
+    public UniqueHashCode(final CellProcessor next) {
+        super(next);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @throws SuperCsvCellProcessorException
+     *             if value is null
+     * @throws SuperCsvConstraintViolationException
+     *             if a non-unique value is encountered
+     */
+    public Object execute(final Object value, final CsvContext context) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

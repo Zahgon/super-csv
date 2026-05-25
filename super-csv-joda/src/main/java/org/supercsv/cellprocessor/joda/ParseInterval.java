@@ -24,50 +24,37 @@ import org.supercsv.util.CsvContext;
 
 /**
  * Converts a String (in ISO8601 interval format) to a Joda Interval.
- * 
+ *
  * @since 2.3.0
  * @author James Bassett
  */
 public class ParseInterval extends CellProcessorAdaptor implements StringCellProcessor {
 
-	/**
-	 * Constructs a new <tt>ParseInterval</tt> processor, which parses a String
-	 * as a Joda Interval.
-	 */
-	public ParseInterval() {
-	}
+    /**
+     * Constructs a new <tt>ParseInterval</tt> processor, which parses a String
+     * as a Joda Interval.
+     */
+    public ParseInterval() {
+    }
 
-	/**
-	 * Constructs a new <tt>ParseInterval</tt> processor, which parses a String
-	 * as a Joda Interval, then calls the next processor in the chain.
-	 * 
-	 * @param next
-	 *            the next processor in the chain
-	 */
-	public ParseInterval(final CellProcessor next) {
-		super(next);
-	}
+    /**
+     * Constructs a new <tt>ParseInterval</tt> processor, which parses a String
+     * as a Joda Interval, then calls the next processor in the chain.
+     *
+     * @param next
+     *            the next processor in the chain
+     */
+    public ParseInterval(final CellProcessor next) {
+        super(next);
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @throws SuperCsvCellProcessorException
-	 *             if value is null or is not a String
-	 */
-	public Object execute(final Object value, final CsvContext context) {
-		validateInputNotNull(value, context);
-		if (!(value instanceof String)) {
-			throw new SuperCsvCellProcessorException(String.class, value,
-					context, this);
-		}
-		final Interval result;
-		try {
-			result = Interval.parse((String) value);
-		} catch (IllegalArgumentException e) {
-			throw new SuperCsvCellProcessorException(
-					"Failed to parse value as an Interval", context, this, e);
-		}
-		return next.execute(result, context);
-	}
-
+    /**
+     * {@inheritDoc}
+     *
+     * @throws SuperCsvCellProcessorException
+     *             if value is null or is not a String
+     */
+    public Object execute(final Object value, final CsvContext context) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

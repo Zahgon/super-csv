@@ -20,75 +20,22 @@ import org.supercsv.util.CsvContext;
 
 /**
  * The default CsvEncoder implementation.
- * 
+ *
  * @author James Bassett
  * @since 2.1.0
  */
 public class DefaultCsvEncoder implements CsvEncoder {
-	
-	/**
-	 * Constructs a new <tt>DefaultCsvEncoder</tt>.
-	 */
-	public DefaultCsvEncoder() {
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	public String encode(final String input, final CsvContext context, final CsvPreference preference) {
-		
-		final StringBuilder currentColumn = new StringBuilder();
-		final int delimiter = preference.getDelimiterChar();
-		final char quote = (char) preference.getQuoteChar();
-		final char quoteEscapeChar = (char) preference.getQuoteEscapeChar();
-		final String eolSymbols = preference.getEndOfLineSymbols();
-		final int lastCharIndex = input.length() - 1;
-		
-		boolean quotesRequiredForSpecialChar = false;
-		
-		boolean skipNewline = false;
-		
-		for( int i = 0; i <= lastCharIndex; i++ ) {
-			
-			final char c = input.charAt(i);
-			
-			if( skipNewline ) {
-				skipNewline = false;
-				if( c == '\n' ) {
-					continue; // newline following a carriage return is skipped
-				}
-			}
-			
-			if( c == delimiter ) {
-				quotesRequiredForSpecialChar = true;
-				currentColumn.append(c);
-			} else if( c == quote ) {
-				quotesRequiredForSpecialChar = true;
-				currentColumn.append(quoteEscapeChar);
-				currentColumn.append(quote);
-			} else if( c == '\r' ) {
-				quotesRequiredForSpecialChar = true;
-				currentColumn.append(eolSymbols);
-				context.setLineNumber(context.getLineNumber() + 1);
-				skipNewline = true;
-			} else if( c == '\n' ) {
-				quotesRequiredForSpecialChar = true;
-				currentColumn.append(eolSymbols);
-				context.setLineNumber(context.getLineNumber() + 1);
-			} else {
-				currentColumn.append(c);
-			}
-		}
-		
-		final boolean quotesRequiredForMode = preference.getQuoteMode().quotesRequired(input, context, preference);
-		final boolean quotesRequiredForSurroundingSpaces = preference.isSurroundingSpacesNeedQuotes()
-			&& input.length() > 0 && (input.charAt(0) == ' ' || input.charAt(input.length() - 1) == ' ');
-		
-		if( quotesRequiredForSpecialChar || quotesRequiredForMode || quotesRequiredForSurroundingSpaces ) {
-			currentColumn.insert(0, quote).append(quote);
-		}
-		
-		return currentColumn.toString();
-	}
-	
+
+    /**
+     * Constructs a new <tt>DefaultCsvEncoder</tt>.
+     */
+    public DefaultCsvEncoder() {
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public String encode(final String input, final CsvContext context, final CsvPreference preference) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

@@ -28,7 +28,7 @@ import org.supercsv.util.CsvContext;
 
 /**
  * Converts a String to a Joda Period.
- * 
+ *
  * <p>
  * For constructors using PeriodFormatter, refer to the following Joda classes:
  * <ul>
@@ -42,110 +42,89 @@ import org.supercsv.util.CsvContext;
  * <p>
  * For example, "PT6H3M7S" represents 6 hours, 3 minutes, 7 seconds.
  * <p>
- * 
+ *
  * @since 2.3.0
  * @author James Bassett
  */
 public class ParsePeriod extends CellProcessorAdaptor implements StringCellProcessor {
 
-	private final PeriodFormatter formatter;
+    private final PeriodFormatter formatter;
 
-	/**
-	 * Constructs a new <tt>ParsePeriod</tt> processor, which parses a String as
-	 * a Joda Period.
-	 */
-	public ParsePeriod() {
-		this.formatter = null;
-	}
+    /**
+     * Constructs a new <tt>ParsePeriod</tt> processor, which parses a String as
+     * a Joda Period.
+     */
+    public ParsePeriod() {
+        this.formatter = null;
+    }
 
-	/**
-	 * Constructs a new <tt>ParsePeriod</tt> processor, which parses a String as
-	 * a Joda Period, then calls the next processor in the chain.
-	 * 
-	 * @param next
-	 *            the next processor in the chain
-	 * @throws NullPointerException
-	 *             if next is null
-	 */
-	public ParsePeriod(final CellProcessor next) {
-		super(next);
-		this.formatter = null;
-	}
+    /**
+     * Constructs a new <tt>ParsePeriod</tt> processor, which parses a String as
+     * a Joda Period, then calls the next processor in the chain.
+     *
+     * @param next
+     *            the next processor in the chain
+     * @throws NullPointerException
+     *             if next is null
+     */
+    public ParsePeriod(final CellProcessor next) {
+        super(next);
+        this.formatter = null;
+    }
 
-	/**
-	 * Constructs a new <tt>ParsePeriod</tt> processor, which parses a String as
-	 * a Joda Period using the supplied formatter.
-	 * 
-	 * @param formatter
-	 *            the formatter used for parsing
-	 * @throws NullPointerException
-	 *             if formatter is null
-	 */
-	public ParsePeriod(final PeriodFormatter formatter) {
-		checkPreconditions(formatter);
-		this.formatter = formatter;
-	}
+    /**
+     * Constructs a new <tt>ParsePeriod</tt> processor, which parses a String as
+     * a Joda Period using the supplied formatter.
+     *
+     * @param formatter
+     *            the formatter used for parsing
+     * @throws NullPointerException
+     *             if formatter is null
+     */
+    public ParsePeriod(final PeriodFormatter formatter) {
+        checkPreconditions(formatter);
+        this.formatter = formatter;
+    }
 
-	/**
-	 * Constructs a new <tt>ParsePeriod</tt> processor, which parses a String as
-	 * a Joda Period using the supplied formatter, then calls the next processor
-	 * in the chain.
-	 * 
-	 * @param formatter
-	 *            the formatter used for parsing
-	 * @param next
-	 *            the next processor in the chain
-	 * @throws NullPointerException
-	 *             if formatter or next is null
-	 */
-	public ParsePeriod(final PeriodFormatter formatter, final CellProcessor next) {
-		super(next);
-		checkPreconditions(formatter);
-		this.formatter = formatter;
-	}
+    /**
+     * Constructs a new <tt>ParsePeriod</tt> processor, which parses a String as
+     * a Joda Period using the supplied formatter, then calls the next processor
+     * in the chain.
+     *
+     * @param formatter
+     *            the formatter used for parsing
+     * @param next
+     *            the next processor in the chain
+     * @throws NullPointerException
+     *             if formatter or next is null
+     */
+    public ParsePeriod(final PeriodFormatter formatter, final CellProcessor next) {
+        super(next);
+        checkPreconditions(formatter);
+        this.formatter = formatter;
+    }
 
-	/**
-	 * Checks the preconditions for creating a new ParsePeriod processor.
-	 * 
-	 * @param formatter
-	 *            the formatter
-	 * @throws NullPointerException
-	 *             if formatter is null
-	 */
-	private static void checkPreconditions(final PeriodFormatter formatter) {
-		if (formatter == null) {
-			throw new NullPointerException("formatter should not be null");
-		}
-	}
+    /**
+     * Checks the preconditions for creating a new ParsePeriod processor.
+     *
+     * @param formatter
+     *            the formatter
+     * @throws NullPointerException
+     *             if formatter is null
+     */
+    private static void checkPreconditions(final PeriodFormatter formatter) {
+        if (formatter == null) {
+            throw new NullPointerException("formatter should not be null");
+        }
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @throws SuperCsvCellProcessorException
-	 *             if value is null or is not a String
-	 */
-	public Object execute(final Object value, final CsvContext context) {
-		validateInputNotNull(value, context);
-		if (!(value instanceof String)) {
-			throw new SuperCsvCellProcessorException(String.class, value,
-					context, this);
-		}
-
-		final String string = (String) value;
-		final Period result;
-
-		try {
-			if (formatter != null) {
-				result = Period.parse(string, formatter);
-			} else {
-				result = Period.parse(string);
-			}
-		} catch (IllegalArgumentException e) {
-			throw new SuperCsvCellProcessorException(
-					"Failed to parse value as a Period", context, this, e);
-		}
-
-		return next.execute(result, context);
-	}
-
+    /**
+     * {@inheritDoc}
+     *
+     * @throws SuperCsvCellProcessorException
+     *             if value is null or is not a String
+     */
+    public Object execute(final Object value, final CsvContext context) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

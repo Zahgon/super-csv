@@ -16,7 +16,6 @@
 package org.supercsv.cellprocessor.time;
 
 import java.time.Period;
-
 import org.supercsv.cellprocessor.CellProcessorAdaptor;
 import org.supercsv.cellprocessor.ift.CellProcessor;
 import org.supercsv.exception.SuperCsvCellProcessorException;
@@ -33,39 +32,31 @@ import org.supercsv.util.CsvContext;
  */
 public class FmtPeriod extends CellProcessorAdaptor {
 
-	/**
-	 * Constructs a new <tt>FmtPeriod</tt> processor, which formats a
-	 * Period as a String.
-	 */
-	public FmtPeriod() {
-		super();
-	}
+    /**
+     * Constructs a new <tt>FmtPeriod</tt> processor, which formats a
+     * Period as a String.
+     */
+    public FmtPeriod() {
+        super();
+    }
 
-	/**
-	 * Constructs a new <tt>FmtPeriod</tt> processor, which formats a
-	 * Period as a String, then calls the next processor in the chain.
-	 *
-	 * @param next the next processor in the chain
-	 * @throws NullPointerException if formatter or next is null
-	 */
-	public FmtPeriod(final CellProcessor next) {
-		super(next);
-	}
+    /**
+     * Constructs a new <tt>FmtPeriod</tt> processor, which formats a
+     * Period as a String, then calls the next processor in the chain.
+     *
+     * @param next the next processor in the chain
+     * @throws NullPointerException if formatter or next is null
+     */
+    public FmtPeriod(final CellProcessor next) {
+        super(next);
+    }
 
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @throws SuperCsvCellProcessorException if value is null or not a Period
-	 */
-	public Object execute(final Object value, final CsvContext context) {
-		validateInputNotNull(value, context);
-		if( !(value instanceof Period) ) {
-			throw new SuperCsvCellProcessorException(Period.class, value, context, this);
-		}
-		final Period period = (Period) value;
-		final String result = period.toString();
-
-		return next.execute(result, context);
-	}
-
+    /**
+     * {@inheritDoc}
+     *
+     * @throws SuperCsvCellProcessorException if value is null or not a Period
+     */
+    public Object execute(final Object value, final CsvContext context) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

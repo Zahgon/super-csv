@@ -18,7 +18,6 @@ package org.supercsv.cellprocessor.time;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
-
 import org.supercsv.cellprocessor.ift.CellProcessor;
 
 /**
@@ -37,65 +36,64 @@ import org.supercsv.cellprocessor.ift.CellProcessor;
  */
 public class ParseZonedDateTime extends AbstractTemporalAccessorParsingProcessor<ZonedDateTime> {
 
-	/**
-	 * Constructs a new <tt>ParseZonedDateTime</tt> processor, which parses a String
-	 * in the same format accepted by {@link ZonedDateTime#parse(CharSequence)}
-	 * as a ZonedDateTime.
-	 */
-	public ParseZonedDateTime() {
-		super();
-	}
+    /**
+     * Constructs a new <tt>ParseZonedDateTime</tt> processor, which parses a String
+     * in the same format accepted by {@link ZonedDateTime#parse(CharSequence)}
+     * as a ZonedDateTime.
+     */
+    public ParseZonedDateTime() {
+        super();
+    }
 
-	/**
-	 * Constructs a new <tt>ParseZonedDateTime</tt> processor, which parses a String
-	 * as a ZonedDateTime, then calls the next processor in the chain.
-	 *
-	 * @param next the next processor in the chain
-	 * @throws NullPointerException if next is null
-	 * @see ParseZonedDateTime()
-	 */
-	public ParseZonedDateTime(final CellProcessor next) {
-		super(next);
-	}
+    /**
+     * Constructs a new <tt>ParseZonedDateTime</tt> processor, which parses a String
+     * as a ZonedDateTime, then calls the next processor in the chain.
+     *
+     * @param next the next processor in the chain
+     * @throws NullPointerException if next is null
+     * @see ParseZonedDateTime()
+     */
+    public ParseZonedDateTime(final CellProcessor next) {
+        super(next);
+    }
 
-	/**
-	 * Constructs a new <tt>ParseZonedDateTime</tt> processor, which parses a String
-	 * as a ZonedDateTime using the supplied formatter.
-	 *
-	 * @param formatter the formatter used for parsing
-	 * @throws NullPointerException if formatter is null
-	 */
-	public ParseZonedDateTime(final DateTimeFormatter formatter) {
-		super(formatter);
-	}
+    /**
+     * Constructs a new <tt>ParseZonedDateTime</tt> processor, which parses a String
+     * as a ZonedDateTime using the supplied formatter.
+     *
+     * @param formatter the formatter used for parsing
+     * @throws NullPointerException if formatter is null
+     */
+    public ParseZonedDateTime(final DateTimeFormatter formatter) {
+        super(formatter);
+    }
 
-	/**
-	 * Constructs a new <tt>ParseZonedDateTime</tt> processor, which parses a String
-	 * as a ZonedDateTime using the supplied formatter, then calls the next
-	 * processor in the chain.
-	 *
-	 * @param formatter the formatter used for parsing
-	 * @param next      the next processor in the chain
-	 * @throws NullPointerException if formatter or next is null
-	 */
-	public ParseZonedDateTime(final DateTimeFormatter formatter, final CellProcessor next) {
-		super(formatter, next);
-	}
+    /**
+     * Constructs a new <tt>ParseZonedDateTime</tt> processor, which parses a String
+     * as a ZonedDateTime using the supplied formatter, then calls the next
+     * processor in the chain.
+     *
+     * @param formatter the formatter used for parsing
+     * @param next      the next processor in the chain
+     * @throws NullPointerException if formatter or next is null
+     */
+    public ParseZonedDateTime(final DateTimeFormatter formatter, final CellProcessor next) {
+        super(formatter, next);
+    }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	protected ZonedDateTime parse(final String string) {
-		return ZonedDateTime.parse(string);
-	}
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected ZonedDateTime parse(final String string) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	protected ZonedDateTime parse(final String string, final DateTimeFormatter formatter) {
-		return ZonedDateTime.parse(string, formatter);
-	}
-
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected ZonedDateTime parse(final String string, final DateTimeFormatter formatter) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

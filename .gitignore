@@ -11,3 +11,8 @@ target/
 
 # Netbeans
 nb-configuration.xml
+
+.aider*
+logs/
+.commit0_scripts/
+.github/workflows/

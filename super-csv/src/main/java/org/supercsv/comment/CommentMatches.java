@@ -22,36 +22,35 @@ import java.util.regex.PatternSyntaxException;
  * CommentMatcher that matches lines that match a specified regular expression.
  */
 public class CommentMatches implements CommentMatcher {
-	
-	private final Pattern pattern;
-	
-	/**
-	 * Constructs a new <tt>CommentMatches</tt> comment matcher. Ensure that the regex is efficient (ideally matching start/end
-	 * characters) as a complex regex can significantly slow down reading.
-	 * 
-	 * @param regex
-	 *            the regular expression a line must match to be a comment
-	 * @throws NullPointerException
-	 *             if regex is null
-	 * @throws IllegalArgumentException
-	 *             if regex is empty
-	 * @throws PatternSyntaxException
-	 *             if the regex is invalid
-	 */
-	public CommentMatches(final String regex) {
-		if( regex == null ) {
-			throw new NullPointerException("regex should not be null");
-		} else if( regex.length() == 0 ) {
-			throw new IllegalArgumentException("regex should not be empty");
-		}
-		this.pattern = Pattern.compile(regex);
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	public boolean isComment(String line) {
-		return pattern.matcher(line).matches();
-	}
-	
+
+    private final Pattern pattern;
+
+    /**
+     * Constructs a new <tt>CommentMatches</tt> comment matcher. Ensure that the regex is efficient (ideally matching start/end
+     * characters) as a complex regex can significantly slow down reading.
+     *
+     * @param regex
+     *            the regular expression a line must match to be a comment
+     * @throws NullPointerException
+     *             if regex is null
+     * @throws IllegalArgumentException
+     *             if regex is empty
+     * @throws PatternSyntaxException
+     *             if the regex is invalid
+     */
+    public CommentMatches(final String regex) {
+        if (regex == null) {
+            throw new NullPointerException("regex should not be null");
+        } else if (regex.length() == 0) {
+            throw new IllegalArgumentException("regex should not be empty");
+        }
+        this.pattern = Pattern.compile(regex);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public boolean isComment(String line) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

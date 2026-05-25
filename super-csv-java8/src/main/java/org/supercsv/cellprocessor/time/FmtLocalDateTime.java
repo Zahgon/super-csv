@@ -18,7 +18,6 @@ package org.supercsv.cellprocessor.time;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
-
 import org.supercsv.cellprocessor.ift.CellProcessor;
 
 /**
@@ -37,54 +36,54 @@ import org.supercsv.cellprocessor.ift.CellProcessor;
  */
 public class FmtLocalDateTime extends AbstractTemporalAccessorFormattingProcessor<LocalDateTime> {
 
-	/**
-	 * Constructs a new <tt>FmtLocalDateTime</tt> processor, which formats a
-	 * LocalDateTime as a String.
-	 *
-	 * The format is the same as obtained by {@link LocalDateTime#toString()}
-	 */
-	public FmtLocalDateTime() {
-		super();
-	}
+    /**
+     * Constructs a new <tt>FmtLocalDateTime</tt> processor, which formats a
+     * LocalDateTime as a String.
+     *
+     * The format is the same as obtained by {@link LocalDateTime#toString()}
+     */
+    public FmtLocalDateTime() {
+        super();
+    }
 
-	/**
-	 * Constructs a new <tt>FmtLocalDateTime</tt> processor, which formats a
-	 * LocalDateTime as a String, then calls the next processor in the
-	 * chain.
-	 *
-	 * @param next next processor in the chain
-	 * @throws NullPointerException if next is null
-	 */
-	public FmtLocalDateTime(final CellProcessor next) {
-		super(next);
-	}
+    /**
+     * Constructs a new <tt>FmtLocalDateTime</tt> processor, which formats a
+     * LocalDateTime as a String, then calls the next processor in the
+     * chain.
+     *
+     * @param next next processor in the chain
+     * @throws NullPointerException if next is null
+     */
+    public FmtLocalDateTime(final CellProcessor next) {
+        super(next);
+    }
 
-	/**
-	 * Constructs a new <tt>FmtLocalDateTime</tt> processor, which formats a
-	 * LocalDateTime as a String using the supplied formatter.
-	 *
-	 * @param formatter the formatter to use
-	 * @throws NullPointerException if formatter is null
-	 */
-	public FmtLocalDateTime(final DateTimeFormatter formatter) {
-		super(formatter);
-	}
+    /**
+     * Constructs a new <tt>FmtLocalDateTime</tt> processor, which formats a
+     * LocalDateTime as a String using the supplied formatter.
+     *
+     * @param formatter the formatter to use
+     * @throws NullPointerException if formatter is null
+     */
+    public FmtLocalDateTime(final DateTimeFormatter formatter) {
+        super(formatter);
+    }
 
-	/**
-	 * Constructs a new <tt>FmtLocalDateTime</tt> processor, which formats a
-	 * LocalDateTime as a String using the supplied formatter, then calls
-	 * the next processor in the chain.
-	 *
-	 * @param formatter the formatter to use
-	 * @param next      the next processor in the chain
-	 * @throws NullPointerException if formatter or next is null
-	 */
-	public FmtLocalDateTime(final DateTimeFormatter formatter, final CellProcessor next) {
-		super(formatter, next);
-	}
+    /**
+     * Constructs a new <tt>FmtLocalDateTime</tt> processor, which formats a
+     * LocalDateTime as a String using the supplied formatter, then calls
+     * the next processor in the chain.
+     *
+     * @param formatter the formatter to use
+     * @param next      the next processor in the chain
+     * @throws NullPointerException if formatter or next is null
+     */
+    public FmtLocalDateTime(final DateTimeFormatter formatter, final CellProcessor next) {
+        super(formatter, next);
+    }
 
-	@Override
-	protected Class<LocalDateTime> getType() {
-		return LocalDateTime.class;
-	}
+    @Override
+    protected Class<LocalDateTime> getType() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

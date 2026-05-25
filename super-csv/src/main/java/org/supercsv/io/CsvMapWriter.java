@@ -20,77 +20,67 @@ import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
 import org.supercsv.cellprocessor.ift.CellProcessor;
 import org.supercsv.prefs.CsvPreference;
 import org.supercsv.util.Util;
 
 /**
  * CsvMapWriter writes Maps of Objects to a CSV file.
- * 
+ *
  * @author Kasper B. Graversen
  * @author James Bassett
  */
 public class CsvMapWriter extends AbstractCsvWriter implements ICsvMapWriter {
-	
-	// temporary storage of processed columns to be written
-	private final List<Object> processedColumns = new ArrayList<Object>();
-	
-	/**
-	 * Constructs a new <tt>CsvMapWriter</tt> with the supplied Writer and CSV preferences. Note that the
-	 * <tt>writer</tt> will be wrapped in a <tt>BufferedWriter</tt> before accessed.
-	 * 
-	 * @param writer
-	 *            the writer
-	 * @param preference
-	 *            the CSV preferences
-	 * @throws NullPointerException
-	 *             if writer or preference is null
-	 * @since 1.0
-	 */
-	public CsvMapWriter(final Writer writer, final CsvPreference preference) {
-		super(writer, preference);
-	}
 
-	/**
-	 * Constructs a new <tt>CsvMapWriter</tt> with the supplied Writer, CSV preferences and option
-	 * to bufferize the writer.
-	 *
-	 * @param writer
-	 *            the writer
-	 * @param preference
-	 *            the CSV preferences
-	 * @param bufferizeWriter
-	 *            if {@code true}, the <tt>writer</tt> will be wrapped in
-	 *            a <tt>BufferedWriter</tt> before accessed.
-	 * @throws NullPointerException
-	 *             if writer or preference is null
-	 * @since 1.0
-	 */
-	public CsvMapWriter(final Writer writer, final CsvPreference preference, boolean bufferizeWriter) {
-		super(writer, preference, bufferizeWriter);
-	}
+    // temporary storage of processed columns to be written
+    private final List<Object> processedColumns = new ArrayList<Object>();
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public void write(final Map<String, ?> values, final String... nameMapping) throws IOException {
-		super.incrementRowAndLineNo();
-		super.writeRow(Util.filterMapToObjectArray(values, nameMapping));
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	public void write(final Map<String, ?> values, final String[] nameMapping, final CellProcessor[] processors)
-		throws IOException {
-		
-		super.incrementRowAndLineNo();
-		
-		// execute the processors for each column
-		Util.executeCellProcessors(processedColumns, Util.filterMapToList(values, nameMapping), processors,
-			getLineNumber(), getRowNumber());
-		
-		super.writeRow(processedColumns);
-	}
+    /**
+     * Constructs a new <tt>CsvMapWriter</tt> with the supplied Writer and CSV preferences. Note that the
+     * <tt>writer</tt> will be wrapped in a <tt>BufferedWriter</tt> before accessed.
+     *
+     * @param writer
+     *            the writer
+     * @param preference
+     *            the CSV preferences
+     * @throws NullPointerException
+     *             if writer or preference is null
+     * @since 1.0
+     */
+    public CsvMapWriter(final Writer writer, final CsvPreference preference) {
+        super(writer, preference);
+    }
+
+    /**
+     * Constructs a new <tt>CsvMapWriter</tt> with the supplied Writer, CSV preferences and option
+     * to bufferize the writer.
+     *
+     * @param writer
+     *            the writer
+     * @param preference
+     *            the CSV preferences
+     * @param bufferizeWriter
+     *            if {@code true}, the <tt>writer</tt> will be wrapped in
+     *            a <tt>BufferedWriter</tt> before accessed.
+     * @throws NullPointerException
+     *             if writer or preference is null
+     * @since 1.0
+     */
+    public CsvMapWriter(final Writer writer, final CsvPreference preference, boolean bufferizeWriter) {
+        super(writer, preference, bufferizeWriter);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public void write(final Map<String, ?> values, final String... nameMapping) throws IOException {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public void write(final Map<String, ?> values, final String[] nameMapping, final CellProcessor[] processors) throws IOException {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

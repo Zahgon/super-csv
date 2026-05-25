@@ -19,7 +19,6 @@ import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.supercsv.cellprocessor.ift.CellProcessor;
 import org.supercsv.exception.SuperCsvConstraintViolationException;
 import org.supercsv.exception.SuperCsvException;
@@ -28,180 +27,161 @@ import org.supercsv.util.Util;
 
 /**
  * Defines the standard behaviour of a CSV reader.
- * 
+ *
  * @author Kasper B. Graversen
  * @author James Bassett
  */
 public abstract class AbstractCsvReader implements ICsvReader {
-	
-	private final ITokenizer tokenizer;
-	
-	private final CsvPreference preferences;
-	
-	// the current tokenized columns
-	private final List<String> columns = new ArrayList<String>();
-	
-	// the number of CSV records read
-	private int rowNumber = 0;
-	
-	/**
-	 * Constructs a new <tt>AbstractCsvReader</tt>, using the default {@link Tokenizer}.
-	 * 
-	 * @param reader
-	 *            the reader
-	 * @param preferences
-	 *            the CSV preferences
-	 * @throws NullPointerException
-	 *             if reader or preferences are null
-	 */
-	public AbstractCsvReader(final Reader reader, final CsvPreference preferences) {
-		if( reader == null ) {
-			throw new NullPointerException("reader should not be null");
-		} else if( preferences == null ) {
-			throw new NullPointerException("preferences should not be null");
-		}
-		
-		this.preferences = preferences;
-		this.tokenizer = new Tokenizer(reader, preferences);
-	}
-	
-	/**
-	 * Constructs a new <tt>AbstractCsvReader</tt>, using a custom {@link Tokenizer} (which should have already been set
-	 * up with the Reader, CsvPreference, and CsvContext). This constructor should only be used if the default Tokenizer
-	 * doesn't provide the required functionality.
-	 * 
-	 * @param tokenizer
-	 *            the tokenizer
-	 * @param preferences
-	 *            the CSV preferences
-	 * @throws NullPointerException
-	 *             if tokenizer or preferences are null
-	 */
-	public AbstractCsvReader(final ITokenizer tokenizer, final CsvPreference preferences) {
-		if( tokenizer == null ) {
-			throw new NullPointerException("tokenizer should not be null");
-		} else if( preferences == null ) {
-			throw new NullPointerException("preferences should not be null");
-		}
-		
-		this.preferences = preferences;
-		this.tokenizer = tokenizer;
-	}
-	
-	/**
-	 * Closes the Tokenizer and its associated Reader.
-	 */
-	public void close() throws IOException {
-		tokenizer.close();
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	public String get(final int n) {
-		return columns.get(n - 1); // column numbers start at 1
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	public String[] getHeader(final boolean firstLineCheck) throws IOException {
-		
-		if( firstLineCheck && tokenizer.getLineNumber() != 0 ) {
-			throw new SuperCsvException(String.format(
-				"CSV header must be fetched as the first read operation, but %d lines have already been read",
-				tokenizer.getLineNumber()));
-		}
-		
-		if( readRow() ) {
-			return columns.toArray(new String[columns.size()]);
-		}
-		
-		return null;
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	public int getLineNumber() {
-		return tokenizer.getLineNumber();
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	public String getUntokenizedRow() {
-		return tokenizer.getUntokenizedRow();
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	public int getRowNumber() {
-		return rowNumber;
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	public int length() {
-		return columns.size();
-	}
-	
-	/**
-	 * Gets the tokenized columns.
-	 * 
-	 * @return the tokenized columns
-	 */
-	protected List<String> getColumns() {
-		return columns;
-	}
-	
-	/**
-	 * Gets the preferences.
-	 * 
-	 * @return the preferences
-	 */
-	protected CsvPreference getPreferences() {
-		return preferences;
-	}
-	
-	/**
-	 * Calls the tokenizer to read a CSV row. The columns can then be retrieved using {@link #getColumns()}.
-	 * 
-	 * @return true if something was read, and false if EOF
-	 * @throws IOException
-	 *             when an IOException occurs
-	 * @throws SuperCsvException
-	 *             on errors in parsing the input
-	 */
-	protected boolean readRow() throws IOException {
-		if( tokenizer.readColumns(columns) ) {
-			rowNumber++;
-			return true;
-		}
-		return false;
-	}
-	
-	/**
-	 * Executes the supplied cell processors on the last row of CSV that was read and populates the supplied List of
-	 * processed columns.
-	 * 
-	 * @param processedColumns
-	 *            the List to populate with processed columns
-	 * @param processors
-	 *            the cell processors
-	 * @return the updated List
-	 * @throws NullPointerException
-	 *             if processedColumns or processors are null
-	 * @throws SuperCsvConstraintViolationException
-	 *             if a CellProcessor constraint failed
-	 * @throws SuperCsvException
-	 *             if the wrong number of processors are supplied, or CellProcessor execution failed
-	 */
-	protected List<Object> executeProcessors(final List<Object> processedColumns, final CellProcessor[] processors) {
-		Util.executeCellProcessors(processedColumns, getColumns(), processors, getLineNumber(), getRowNumber());
-		return processedColumns;
-	}
-	
+
+    private final ITokenizer tokenizer;
+
+    private final CsvPreference preferences;
+
+    // the current tokenized columns
+    private final List<String> columns = new ArrayList<String>();
+
+    // the number of CSV records read
+    private int rowNumber = 0;
+
+    /**
+     * Constructs a new <tt>AbstractCsvReader</tt>, using the default {@link Tokenizer}.
+     *
+     * @param reader
+     *            the reader
+     * @param preferences
+     *            the CSV preferences
+     * @throws NullPointerException
+     *             if reader or preferences are null
+     */
+    public AbstractCsvReader(final Reader reader, final CsvPreference preferences) {
+        if (reader == null) {
+            throw new NullPointerException("reader should not be null");
+        } else if (preferences == null) {
+            throw new NullPointerException("preferences should not be null");
+        }
+        this.preferences = preferences;
+        this.tokenizer = new Tokenizer(reader, preferences);
+    }
+
+    /**
+     * Constructs a new <tt>AbstractCsvReader</tt>, using a custom {@link Tokenizer} (which should have already been set
+     * up with the Reader, CsvPreference, and CsvContext). This constructor should only be used if the default Tokenizer
+     * doesn't provide the required functionality.
+     *
+     * @param tokenizer
+     *            the tokenizer
+     * @param preferences
+     *            the CSV preferences
+     * @throws NullPointerException
+     *             if tokenizer or preferences are null
+     */
+    public AbstractCsvReader(final ITokenizer tokenizer, final CsvPreference preferences) {
+        if (tokenizer == null) {
+            throw new NullPointerException("tokenizer should not be null");
+        } else if (preferences == null) {
+            throw new NullPointerException("preferences should not be null");
+        }
+        this.preferences = preferences;
+        this.tokenizer = tokenizer;
+    }
+
+    /**
+     * Closes the Tokenizer and its associated Reader.
+     */
+    public void close() throws IOException {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public String get(final int n) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public String[] getHeader(final boolean firstLineCheck) throws IOException {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public int getLineNumber() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public String getUntokenizedRow() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public int getRowNumber() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public int length() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    /**
+     * Gets the tokenized columns.
+     *
+     * @return the tokenized columns
+     */
+    protected List<String> getColumns() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    /**
+     * Gets the preferences.
+     *
+     * @return the preferences
+     */
+    protected CsvPreference getPreferences() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    /**
+     * Calls the tokenizer to read a CSV row. The columns can then be retrieved using {@link #getColumns()}.
+     *
+     * @return true if something was read, and false if EOF
+     * @throws IOException
+     *             when an IOException occurs
+     * @throws SuperCsvException
+     *             on errors in parsing the input
+     */
+    protected boolean readRow() throws IOException {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    /**
+     * Executes the supplied cell processors on the last row of CSV that was read and populates the supplied List of
+     * processed columns.
+     *
+     * @param processedColumns
+     *            the List to populate with processed columns
+     * @param processors
+     *            the cell processors
+     * @return the updated List
+     * @throws NullPointerException
+     *             if processedColumns or processors are null
+     * @throws SuperCsvConstraintViolationException
+     *             if a CellProcessor constraint failed
+     * @throws SuperCsvException
+     *             if the wrong number of processors are supplied, or CellProcessor execution failed
+     */
+    protected List<Object> executeProcessors(final List<Object> processedColumns, final CellProcessor[] processors) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

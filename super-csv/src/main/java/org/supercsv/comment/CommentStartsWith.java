@@ -19,33 +19,32 @@ package org.supercsv.comment;
  * CommentMatcher that matches lines that begin with a specified String.
  */
 public class CommentStartsWith implements CommentMatcher {
-	
-	private final String value;
-	
-	/**
-	 * Constructs a new <tt>CommentStartsWith</tt> comment matcher.
-	 * 
-	 * @param value
-	 *            the String a line must start with to be a comment
-	 * @throws NullPointerException
-	 *             if value is null
-	 * @throws IllegalArgumentException
-	 *             if value is empty
-	 */
-	public CommentStartsWith(final String value) {
-		if( value == null ) {
-			throw new NullPointerException("value should not be null");
-		} else if( value.length() == 0 ) {
-			throw new IllegalArgumentException("value should not be empty");
-		}
-		this.value = value;
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	public boolean isComment(String line) {
-		return line.startsWith(value);
-	}
-	
+
+    private final String value;
+
+    /**
+     * Constructs a new <tt>CommentStartsWith</tt> comment matcher.
+     *
+     * @param value
+     *            the String a line must start with to be a comment
+     * @throws NullPointerException
+     *             if value is null
+     * @throws IllegalArgumentException
+     *             if value is empty
+     */
+    public CommentStartsWith(final String value) {
+        if (value == null) {
+            throw new NullPointerException("value should not be null");
+        } else if (value.length() == 0) {
+            throw new IllegalArgumentException("value should not be empty");
+        }
+        this.value = value;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public boolean isComment(String line) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

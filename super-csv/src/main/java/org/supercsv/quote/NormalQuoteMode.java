@@ -21,23 +21,22 @@ import org.supercsv.util.CsvContext;
 /**
  * When using NormalQuoteMode surrounding quotes are only applied if required to escape special characters (per
  * RFC4180).
- * 
+ *
  * @author James Bassett
  * @since 2.1.0
  */
 public class NormalQuoteMode implements QuoteMode {
-	
-	/**
-	 * Constructs a new <tt>NormalQuoteMode</tt>.
-	 */
-	public NormalQuoteMode() {
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	public boolean quotesRequired(final String csvColumn, final CsvContext context, final CsvPreference preference){
-		return false;
-	}
-	
+
+    /**
+     * Constructs a new <tt>NormalQuoteMode</tt>.
+     */
+    public NormalQuoteMode() {
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public boolean quotesRequired(final String csvColumn, final CsvContext context, final CsvPreference preference) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

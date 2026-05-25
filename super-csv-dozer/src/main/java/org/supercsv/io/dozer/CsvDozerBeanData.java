@@ -22,31 +22,30 @@ import java.util.List;
  * Class used internally by CsvDozerBeanReader and CsvDozerBeanWriter for Dozer mapping between CSV columns and beans. As Dozer
  * supports index-based mapping, the Reader/Writer's DozerBeanMapper just needs to be configured with the mappings
  * between the column index and the associated field in the bean.
- * 
+ *
  * @author James Bassett
  * @since 2.0.0
  */
 public class CsvDozerBeanData {
-	
-	private List<Object> columns = new ArrayList<Object>();
-	
-	/**
-	 * Gets the List of columns
-	 * 
-	 * @return the List of columns
-	 */
-	public List<Object> getColumns() {
-		return columns;
-	}
-	
-	/**
-	 * Sets the List of columns
-	 * 
-	 * @param columns
-	 *            the List of columns
-	 */
-	public void setColumns(final List<Object> columns) {
-		this.columns = columns;
-	}
-	
+
+    private List<Object> columns = new ArrayList<Object>();
+
+    /**
+     * Gets the List of columns
+     *
+     * @return the List of columns
+     */
+    public List<Object> getColumns() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    /**
+     * Sets the List of columns
+     *
+     * @param columns
+     *            the List of columns
+     */
+    public void setColumns(final List<Object> columns) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

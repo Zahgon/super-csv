@@ -24,47 +24,39 @@ import org.supercsv.util.CsvContext;
 /**
  * Converts a Joda DateTimeZone to a String (the ID of the timezone, e.g.
  * 'Australia/Brisbane').
- * 
+ *
  * @since 2.3.0
  * @author James Bassett
  */
 public class FmtDateTimeZone extends CellProcessorAdaptor {
 
-	/**
-	 * Constructs a new <tt>FmtDateTimeZone</tt> processor, which formats a Joda
-	 * DateTimeZone as a String.
-	 */
-	public FmtDateTimeZone() {
-	}
+    /**
+     * Constructs a new <tt>FmtDateTimeZone</tt> processor, which formats a Joda
+     * DateTimeZone as a String.
+     */
+    public FmtDateTimeZone() {
+    }
 
-	/**
-	 * Constructs a new <tt>FmtDateTimeZone</tt> processor, which formats a Joda
-	 * DateTimeZone as a String, then calls the next processor in the chain.
-	 * 
-	 * @param next
-	 *            next processor in the chain
-	 * @throws NullPointerException
-	 *             if next is null
-	 */
-	public FmtDateTimeZone(final CellProcessor next) {
-		super(next);
-	}
+    /**
+     * Constructs a new <tt>FmtDateTimeZone</tt> processor, which formats a Joda
+     * DateTimeZone as a String, then calls the next processor in the chain.
+     *
+     * @param next
+     *            next processor in the chain
+     * @throws NullPointerException
+     *             if next is null
+     */
+    public FmtDateTimeZone(final CellProcessor next) {
+        super(next);
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @throws SuperCsvCellProcessorException
-	 *             if value is null or not a DateTimeZone
-	 */
-	public Object execute(final Object value, final CsvContext context) {
-		validateInputNotNull(value, context);
-		if (!(value instanceof DateTimeZone)) {
-			throw new SuperCsvCellProcessorException(DateTimeZone.class, value,
-					context, this);
-		}
-		final DateTimeZone dateTimeZone = (DateTimeZone) value;
-		final String result = dateTimeZone.toString();
-		return next.execute(result, context);
-	}
-
+    /**
+     * {@inheritDoc}
+     *
+     * @throws SuperCsvCellProcessorException
+     *             if value is null or not a DateTimeZone
+     */
+    public Object execute(final Object value, final CsvContext context) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

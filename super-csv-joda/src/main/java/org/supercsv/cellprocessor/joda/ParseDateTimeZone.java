@@ -25,52 +25,38 @@ import org.supercsv.util.CsvContext;
 /**
  * Converts a String (the ID of the timezone, e.g. 'Australia/Brisbane') to a
  * Joda DateTimeZone.
- * 
+ *
  * @since 2.3.0
  * @author James Bassett
  */
 public class ParseDateTimeZone extends CellProcessorAdaptor implements StringCellProcessor {
 
-	/**
-	 * Constructs a new <tt>ParseDateTimeZone</tt> processor, which parses a
-	 * String as a Joda DateTimeZone.
-	 */
-	public ParseDateTimeZone() {
-	}
+    /**
+     * Constructs a new <tt>ParseDateTimeZone</tt> processor, which parses a
+     * String as a Joda DateTimeZone.
+     */
+    public ParseDateTimeZone() {
+    }
 
-	/**
-	 * Constructs a new <tt>ParseDateTimeZone</tt> processor, which parses a
-	 * String as a Joda DateTimeZone, then calls the next processor in the
-	 * chain.
-	 * 
-	 * @param next
-	 *            the next processor in the chain
-	 */
-	public ParseDateTimeZone(final CellProcessor next) {
-		super(next);
-	}
+    /**
+     * Constructs a new <tt>ParseDateTimeZone</tt> processor, which parses a
+     * String as a Joda DateTimeZone, then calls the next processor in the
+     * chain.
+     *
+     * @param next
+     *            the next processor in the chain
+     */
+    public ParseDateTimeZone(final CellProcessor next) {
+        super(next);
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @throws SuperCsvCellProcessorException
-	 *             if value is null or is not a String
-	 */
-	public Object execute(final Object value, final CsvContext context) {
-		validateInputNotNull(value, context);
-		if (!(value instanceof String)) {
-			throw new SuperCsvCellProcessorException(String.class, value,
-					context, this);
-		}
-		final DateTimeZone result;
-		try {
-			result = DateTimeZone.forID((String) value);
-		} catch (IllegalArgumentException e) {
-			throw new SuperCsvCellProcessorException(
-					"Failed to parse value as a DateTimeZone", context, this, e);
-		}
-		return next.execute(result, context);
-
-	}
-
+    /**
+     * {@inheritDoc}
+     *
+     * @throws SuperCsvCellProcessorException
+     *             if value is null or is not a String
+     */
+    public Object execute(final Object value, final CsvContext context) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

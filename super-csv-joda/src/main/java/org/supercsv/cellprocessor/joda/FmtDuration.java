@@ -28,47 +28,39 @@ import org.supercsv.util.CsvContext;
  * For example, "PT72.345S" represents 1 minute, 12 seconds and 345
  * milliseconds.
  * <p>
- * 
+ *
  * @since 2.3.0
  * @author James Bassett
  */
 public class FmtDuration extends CellProcessorAdaptor {
 
-	/**
-	 * Constructs a new <tt>FmtDuration</tt> processor, which formats a Joda
-	 * Duration as a String.
-	 */
-	public FmtDuration() {
-	}
+    /**
+     * Constructs a new <tt>FmtDuration</tt> processor, which formats a Joda
+     * Duration as a String.
+     */
+    public FmtDuration() {
+    }
 
-	/**
-	 * Constructs a new <tt>FmtDuration</tt> processor, which formats a Joda
-	 * Duration as a String, then calls the next processor in the chain.
-	 * 
-	 * @param next
-	 *            next processor in the chain
-	 * @throws NullPointerException
-	 *             if next is null
-	 */
-	public FmtDuration(final CellProcessor next) {
-		super(next);
-	}
+    /**
+     * Constructs a new <tt>FmtDuration</tt> processor, which formats a Joda
+     * Duration as a String, then calls the next processor in the chain.
+     *
+     * @param next
+     *            next processor in the chain
+     * @throws NullPointerException
+     *             if next is null
+     */
+    public FmtDuration(final CellProcessor next) {
+        super(next);
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @throws SuperCsvCellProcessorException
-	 *             if value is null or not a Duration
-	 */
-	public Object execute(final Object value, final CsvContext context) {
-		validateInputNotNull(value, context);
-		if (!(value instanceof Duration)) {
-			throw new SuperCsvCellProcessorException(Duration.class, value,
-					context, this);
-		}
-		final Duration duration = (Duration) value;
-		final String result = duration.toString();
-		return next.execute(result, context);
-	}
-
+    /**
+     * {@inheritDoc}
+     *
+     * @throws SuperCsvCellProcessorException
+     *             if value is null or not a Duration
+     */
+    public Object execute(final Object value, final CsvContext context) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

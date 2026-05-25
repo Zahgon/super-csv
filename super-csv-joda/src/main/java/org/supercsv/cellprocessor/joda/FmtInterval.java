@@ -23,47 +23,39 @@ import org.supercsv.util.CsvContext;
 
 /**
  * Converts a Joda Interval to a String in ISO8601 interval format.
- * 
+ *
  * @since 2.3.0
  * @author James Bassett
  */
 public class FmtInterval extends CellProcessorAdaptor {
 
-	/**
-	 * Constructs a new <tt>FmtInterval</tt> processor, which formats a Joda
-	 * Interval as a String.
-	 */
-	public FmtInterval() {
-	}
+    /**
+     * Constructs a new <tt>FmtInterval</tt> processor, which formats a Joda
+     * Interval as a String.
+     */
+    public FmtInterval() {
+    }
 
-	/**
-	 * Constructs a new <tt>FmtInterval</tt> processor, which formats a Joda
-	 * Interval as a String, then calls the next processor in the chain.
-	 * 
-	 * @param next
-	 *            next processor in the chain
-	 * @throws NullPointerException
-	 *             if next is null
-	 */
-	public FmtInterval(final CellProcessor next) {
-		super(next);
-	}
+    /**
+     * Constructs a new <tt>FmtInterval</tt> processor, which formats a Joda
+     * Interval as a String, then calls the next processor in the chain.
+     *
+     * @param next
+     *            next processor in the chain
+     * @throws NullPointerException
+     *             if next is null
+     */
+    public FmtInterval(final CellProcessor next) {
+        super(next);
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @throws SuperCsvCellProcessorException
-	 *             if value is null or not a Interval
-	 */
-	public Object execute(final Object value, final CsvContext context) {
-		validateInputNotNull(value, context);
-		if (!(value instanceof Interval)) {
-			throw new SuperCsvCellProcessorException(Interval.class, value,
-					context, this);
-		}
-		final Interval interval = (Interval) value;
-		final String result = interval.toString();
-		return next.execute(result, context);
-	}
-
+    /**
+     * {@inheritDoc}
+     *
+     * @throws SuperCsvCellProcessorException
+     *             if value is null or not a Interval
+     */
+    public Object execute(final Object value, final CsvContext context) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

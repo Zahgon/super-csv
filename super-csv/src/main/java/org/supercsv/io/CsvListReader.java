@@ -19,80 +19,65 @@ import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.supercsv.cellprocessor.ift.CellProcessor;
 import org.supercsv.prefs.CsvPreference;
 
 /**
  * CsvListReader is a simple reader that reads a row from a CSV file into a <tt>List</tt> of Strings.
- * 
+ *
  * @author Kasper B. Graversen
  * @author James Bassett
  */
 public class CsvListReader extends AbstractCsvReader implements ICsvListReader {
-	
-	/**
-	 * Constructs a new <tt>CsvListReader</tt> with the supplied Reader and CSV preferences. Note that the
-	 * <tt>reader</tt> will be wrapped in a <tt>BufferedReader</tt> before accessed.
-	 * 
-	 * @param reader
-	 *            the reader
-	 * @param preferences
-	 *            the CSV preferences
-	 * @throws NullPointerException
-	 *             if reader or preferences are null
-	 */
-	public CsvListReader(final Reader reader, final CsvPreference preferences) {
-		super(reader, preferences);
-	}
-	
-	/**
-	 * Constructs a new <tt>CsvListReader</tt> with the supplied (custom) Tokenizer and CSV preferences. The tokenizer
-	 * should be set up with the Reader (CSV input) and CsvPreference beforehand.
-	 * 
-	 * @param tokenizer
-	 *            the tokenizer
-	 * @param preferences
-	 *            the CSV preferences
-	 * @throws NullPointerException
-	 *             if tokenizer or preferences are null
-	 */
-	public CsvListReader(final ITokenizer tokenizer, final CsvPreference preferences) {
-		super(tokenizer, preferences);
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	public List<String> read() throws IOException {
-		
-		if( readRow() ) {
-			return new ArrayList<String>(getColumns());
-		}
-		
-		return null; // EOF
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	public List<Object> read(final CellProcessor... processors) throws IOException {
-		
-		if( processors == null ) {
-			throw new NullPointerException("processors should not be null");
-		}
-		
-		if( readRow() ) {
-			return executeProcessors(processors);
-		}
-		
-		return null; // EOF
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	public List<Object> executeProcessors(final CellProcessor... processors) {
-		return super.executeProcessors(new ArrayList<Object>(getColumns().size()), processors);
-	}
+
+    /**
+     * Constructs a new <tt>CsvListReader</tt> with the supplied Reader and CSV preferences. Note that the
+     * <tt>reader</tt> will be wrapped in a <tt>BufferedReader</tt> before accessed.
+     *
+     * @param reader
+     *            the reader
+     * @param preferences
+     *            the CSV preferences
+     * @throws NullPointerException
+     *             if reader or preferences are null
+     */
+    public CsvListReader(final Reader reader, final CsvPreference preferences) {
+        super(reader, preferences);
+    }
+
+    /**
+     * Constructs a new <tt>CsvListReader</tt> with the supplied (custom) Tokenizer and CSV preferences. The tokenizer
+     * should be set up with the Reader (CSV input) and CsvPreference beforehand.
+     *
+     * @param tokenizer
+     *            the tokenizer
+     * @param preferences
+     *            the CSV preferences
+     * @throws NullPointerException
+     *             if tokenizer or preferences are null
+     */
+    public CsvListReader(final ITokenizer tokenizer, final CsvPreference preferences) {
+        super(tokenizer, preferences);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public List<String> read() throws IOException {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public List<Object> read(final CellProcessor... processors) throws IOException {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public List<Object> executeProcessors(final CellProcessor... processors) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

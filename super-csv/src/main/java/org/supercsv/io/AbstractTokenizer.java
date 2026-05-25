@@ -19,80 +19,75 @@ import java.io.IOException;
 import java.io.LineNumberReader;
 import java.io.Reader;
 import java.util.List;
-
 import org.supercsv.prefs.CsvPreference;
 import org.supercsv.util.Util;
 
 /**
  * Defines the standard behaviour of a Tokenizer. Extend this class if you want the line-reading functionality of the
  * default {@link Tokenizer}, but want to define your own implementation of {@link #readColumns(List)}.
- * 
+ *
  * @author James Bassett
  * @since 2.0.0
  */
 public abstract class AbstractTokenizer implements ITokenizer {
-	
-	private final CsvPreference preferences;
-	
-	private final LineNumberReader lnr;
-	
-	/**
-	 * Constructs a new <tt>AbstractTokenizer</tt>, which reads the CSV file, line by line.
-	 * 
-	 * @param reader
-	 *            the reader
-	 * @param preferences
-	 *            the CSV preferences
-	 * @throws NullPointerException
-	 *             if reader or preferences are null
-	 */
-	public AbstractTokenizer(final Reader reader, final CsvPreference preferences) {
-		if( reader == null ) {
-			throw new NullPointerException("reader should not be null");
-		}
-		if( preferences == null ) {
-			throw new NullPointerException("preferences should not be null");
-		}
-		this.preferences = preferences;
-		lnr = new LineNumberReader(reader);
-	}
-	
-	/**
-	 * Closes the underlying reader.
-	 */
-	public void close() throws IOException {
-		lnr.close();
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	public int getLineNumber() {
-		return lnr.getLineNumber();
-	}
-	
-	/**
-	 * Reads a line of text. Whenever a line terminator is read the current line number is incremented.
-	 * 
-	 * @return A String containing the contents of the line, not including any line termination characters, or
-	 *         <tt>null</tt> if the end of the stream has been reached
-	 * @throws IOException
-	 *             If an I/O error occurs
-	 */
-	protected String readLine() throws IOException {
-		if( getLineNumber() == 0 ) {
-			return Util.subtractBom(lnr.readLine());
-		}
-		return lnr.readLine();
-	}
-	
-	/**
-	 * Gets the CSV preferences.
-	 * 
-	 * @return the preferences
-	 */
-	protected CsvPreference getPreferences() {
-		return preferences;
-	}
-	
+
+    private final CsvPreference preferences;
+
+    private final LineNumberReader lnr;
+
+    /**
+     * Constructs a new <tt>AbstractTokenizer</tt>, which reads the CSV file, line by line.
+     *
+     * @param reader
+     *            the reader
+     * @param preferences
+     *            the CSV preferences
+     * @throws NullPointerException
+     *             if reader or preferences are null
+     */
+    public AbstractTokenizer(final Reader reader, final CsvPreference preferences) {
+        if (reader == null) {
+            throw new NullPointerException("reader should not be null");
+        }
+        if (preferences == null) {
+            throw new NullPointerException("preferences should not be null");
+        }
+        this.preferences = preferences;
+        lnr = new LineNumberReader(reader);
+    }
+
+    /**
+     * Closes the underlying reader.
+     */
+    public void close() throws IOException {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public int getLineNumber() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    /**
+     * Reads a line of text. Whenever a line terminator is read the current line number is incremented.
+     *
+     * @return A String containing the contents of the line, not including any line termination characters, or
+     *         <tt>null</tt> if the end of the stream has been reached
+     * @throws IOException
+     *             If an I/O error occurs
+     */
+    protected String readLine() throws IOException {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    /**
+     * Gets the CSV preferences.
+     *
+     * @return the preferences
+     */
+    protected CsvPreference getPreferences() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

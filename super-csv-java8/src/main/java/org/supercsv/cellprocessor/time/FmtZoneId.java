@@ -19,7 +19,6 @@ import java.time.ZoneId;
 import java.time.format.TextStyle;
 import java.util.Locale;
 import java.util.Objects;
-
 import org.supercsv.cellprocessor.CellProcessorAdaptor;
 import org.supercsv.cellprocessor.ift.CellProcessor;
 import org.supercsv.exception.SuperCsvCellProcessorException;
@@ -35,81 +34,70 @@ import org.supercsv.util.CsvContext;
  */
 public class FmtZoneId extends CellProcessorAdaptor {
 
-	private final TextStyle textStyle;
-	private final Locale locale;
+    private final TextStyle textStyle;
 
-	/**
-	 * Constructs a new <tt>FmtZoneId</tt> processor, which formats a
-	 * ZoneId as a String.
-	 */
-	public FmtZoneId() {
-		this.textStyle = null;
-		this.locale = null;
-	}
+    private final Locale locale;
 
-	/**
-	 * Constructs a new <tt>FmtZoneId</tt> processor, which formats a
-	 * ZoneId as a String, then calls the next processor in the chain.
-	 *
-	 * @param next next processor in the chain
-	 * @throws NullPointerException if next is null
-	 */
-	public FmtZoneId(final CellProcessor next) {
-		super(next);
-		this.textStyle = null;
-		this.locale = null;
-	}
+    /**
+     * Constructs a new <tt>FmtZoneId</tt> processor, which formats a
+     * ZoneId as a String.
+     */
+    public FmtZoneId() {
+        this.textStyle = null;
+        this.locale = null;
+    }
 
-	/**
-	 * Constructs a new <tt>FmtZoneId</tt> processor, which formats a
-	 * ZoneId as String, then calls the next processor in the chain.
-	 *
-	 * @param textStyle the TextStyle to use for formatting
-	 * @param locale    the Locale to use for formatting
-	 * @throws NullPointerException if either textStyle or locale is null
-	 */
-	public FmtZoneId(TextStyle textStyle, Locale locale) {
-		Objects.requireNonNull(textStyle);
-		Objects.requireNonNull(locale);
-		this.textStyle = textStyle;
-		this.locale = locale;
-	}
+    /**
+     * Constructs a new <tt>FmtZoneId</tt> processor, which formats a
+     * ZoneId as a String, then calls the next processor in the chain.
+     *
+     * @param next next processor in the chain
+     * @throws NullPointerException if next is null
+     */
+    public FmtZoneId(final CellProcessor next) {
+        super(next);
+        this.textStyle = null;
+        this.locale = null;
+    }
 
-	/**
-	 * Constructs a new <tt>FmtZoneId</tt> processor, which formats a
-	 * ZoneId as String, then calls the next processor in the chain.
-	 *
-	 * @param textStyle the TextStyle to use for formatting
-	 * @param locale    the Locale to use for formatting
-	 * @param next      next processor in the chain
-	 * @throws NullPointerException if any argument is null
-	 */
-	public FmtZoneId(final TextStyle textStyle, final Locale locale, final CellProcessor next) {
-		super(next);
-		Objects.requireNonNull(textStyle);
-		Objects.requireNonNull(locale);
-		this.textStyle = textStyle;
-		this.locale = locale;
-	}
+    /**
+     * Constructs a new <tt>FmtZoneId</tt> processor, which formats a
+     * ZoneId as String, then calls the next processor in the chain.
+     *
+     * @param textStyle the TextStyle to use for formatting
+     * @param locale    the Locale to use for formatting
+     * @throws NullPointerException if either textStyle or locale is null
+     */
+    public FmtZoneId(TextStyle textStyle, Locale locale) {
+        Objects.requireNonNull(textStyle);
+        Objects.requireNonNull(locale);
+        this.textStyle = textStyle;
+        this.locale = locale;
+    }
 
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @throws SuperCsvCellProcessorException if value is null or not a ZoneId
-	 */
-	public Object execute(final Object value, final CsvContext context) {
-		validateInputNotNull(value, context);
-		if( !(value instanceof ZoneId) ) {
-			throw new SuperCsvCellProcessorException(ZoneId.class, value, context, this);
-		}
-		final ZoneId zoneId = (ZoneId) value;
-		final String result;
-		if (textStyle != null && locale != null) {
-			result = zoneId.getDisplayName(textStyle, locale);
-		} else {
-			result = zoneId.toString();
-		}
-		return next.execute(result, context);
-	}
+    /**
+     * Constructs a new <tt>FmtZoneId</tt> processor, which formats a
+     * ZoneId as String, then calls the next processor in the chain.
+     *
+     * @param textStyle the TextStyle to use for formatting
+     * @param locale    the Locale to use for formatting
+     * @param next      next processor in the chain
+     * @throws NullPointerException if any argument is null
+     */
+    public FmtZoneId(final TextStyle textStyle, final Locale locale, final CellProcessor next) {
+        super(next);
+        Objects.requireNonNull(textStyle);
+        Objects.requireNonNull(locale);
+        this.textStyle = textStyle;
+        this.locale = locale;
+    }
 
+    /**
+     * {@inheritDoc}
+     *
+     * @throws SuperCsvCellProcessorException if value is null or not a ZoneId
+     */
+    public Object execute(final Object value, final CsvContext context) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

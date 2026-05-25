@@ -28,42 +28,38 @@ import org.supercsv.util.CsvContext;
  * <p>
  * Prior to 2.0.0, this processor truncated Strings - this functionality can now be found in the {@link Truncate}
  * processor.
- * 
+ *
  * @author James Bassett
  */
-public class Trim extends CellProcessorAdaptor implements BoolCellProcessor, DateCellProcessor, DoubleCellProcessor,
-	LongCellProcessor, StringCellProcessor {
-	
-	/**
-	 * Constructs a new <tt>Trim</tt> processor, which trims a String to ensure it has no surrounding whitespace.
-	 */
-	public Trim() {
-		super();
-	}
-	
-	/**
-	 * Constructs a new <tt>Trim</tt> processor, which trims a String to ensure it has no surrounding whitespace then
-	 * calls the next processor in the chain.
-	 * 
-	 * @param next
-	 *            the next processor in the chain
-	 * @throws NullPointerException
-	 *             if next is null
-	 */
-	public Trim(final StringCellProcessor next) {
-		super(next);
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @throws SuperCsvCellProcessorException
-	 *             if value is null
-	 */
-	public Object execute(final Object value, final CsvContext context) {
-		validateInputNotNull(value, context);
-		
-		final String result = value.toString().trim();
-		return next.execute(result, context);
-	}
+public class Trim extends CellProcessorAdaptor implements BoolCellProcessor, DateCellProcessor, DoubleCellProcessor, LongCellProcessor, StringCellProcessor {
+
+    /**
+     * Constructs a new <tt>Trim</tt> processor, which trims a String to ensure it has no surrounding whitespace.
+     */
+    public Trim() {
+        super();
+    }
+
+    /**
+     * Constructs a new <tt>Trim</tt> processor, which trims a String to ensure it has no surrounding whitespace then
+     * calls the next processor in the chain.
+     *
+     * @param next
+     *            the next processor in the chain
+     * @throws NullPointerException
+     *             if next is null
+     */
+    public Trim(final StringCellProcessor next) {
+        super(next);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @throws SuperCsvCellProcessorException
+     *             if value is null
+     */
+    public Object execute(final Object value, final CsvContext context) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

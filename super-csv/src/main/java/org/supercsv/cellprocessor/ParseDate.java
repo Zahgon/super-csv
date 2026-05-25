@@ -19,7 +19,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
-
 import org.supercsv.cellprocessor.ift.DateCellProcessor;
 
 /**
@@ -37,62 +36,60 @@ import org.supercsv.cellprocessor.ift.DateCellProcessor;
  * <p>
  * If you don't wish to use the default Locale when parsing Dates (your data is formatted for a different Locale), then
  * use the constructor that accepts a Locale.
- * 
+ *
  * @author Kasper B. Graversen
  * @author James Bassett
  * @author Pietro Aragona
  */
 public class ParseDate extends ParseDateTimeAbstract {
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	public ParseDate(String dateFormat, boolean lenient, DateCellProcessor next) {
-		super(dateFormat, lenient, next);
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	public ParseDate(String dateFormat, boolean lenient, Locale locale, DateCellProcessor next) {
-		super(dateFormat, lenient, locale, next);
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	public ParseDate(String dateFormat, boolean lenient, Locale locale) {
-		super(dateFormat, lenient, locale);
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	public ParseDate(String dateFormat, boolean lenient) {
-		super(dateFormat, lenient);
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	public ParseDate(String dateFormat, DateCellProcessor next) {
-		super(dateFormat, next);
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	public ParseDate(String dateFormat) {
-		super(dateFormat);
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	protected Object parseValue(Object value) throws ParseException {
-		final Date result = formatter.parse((String) value);
-		return result;
-	}
-	
+
+    /**
+     * {@inheritDoc}
+     */
+    public ParseDate(String dateFormat, boolean lenient, DateCellProcessor next) {
+        super(dateFormat, lenient, next);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public ParseDate(String dateFormat, boolean lenient, Locale locale, DateCellProcessor next) {
+        super(dateFormat, lenient, locale, next);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public ParseDate(String dateFormat, boolean lenient, Locale locale) {
+        super(dateFormat, lenient, locale);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public ParseDate(String dateFormat, boolean lenient) {
+        super(dateFormat, lenient);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public ParseDate(String dateFormat, DateCellProcessor next) {
+        super(dateFormat, next);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public ParseDate(String dateFormat) {
+        super(dateFormat);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected Object parseValue(Object value) throws ParseException {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

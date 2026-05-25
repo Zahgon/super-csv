@@ -34,63 +34,57 @@ import org.supercsv.util.CsvContext;
  * </code>
  * <p>
  * Comparison between the input and the <tt>token</tt> is based on the object's <tt>equals()</tt> method.
- * 
+ *
  * @since 1.02
  * @author Kasper B. Graversen
  */
-public class Token extends CellProcessorAdaptor implements BoolCellProcessor, DateCellProcessor, DoubleCellProcessor,
-	LongCellProcessor, StringCellProcessor {
-	
-	private final Object returnValue;
-	private final Object token;
-	
-	/**
-	 * Constructs a new <tt>Token</tt> processor, which returns the supplied value if the token is encountered,
-	 * otherwise it returns the input unchanged.
-	 * 
-	 * @param token
-	 *            the token
-	 * @param returnValue
-	 *            the value to return if the token is encountered
-	 */
-	public Token(final Object token, final Object returnValue) {
-		super();
-		this.token = token;
-		this.returnValue = returnValue;
-	}
-	
-	/**
-	 * Constructs a new <tt>Token</tt> processor, which returns the supplied value if the token is encountered,
-	 * otherwise it passes the input unchanged to the next processor in the chain.
-	 * 
-	 * @param token
-	 *            the token
-	 * @param returnValue
-	 *            the value to return if the token is encountered
-	 * @param next
-	 *            the next processor in the chain
-	 * @throws NullPointerException
-	 *             if next is null
-	 */
-	public Token(final Object token, final Object returnValue, final CellProcessor next) {
-		super(next);
-		this.token = token;
-		this.returnValue = returnValue;
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @throws SuperCsvCellProcessorException
-	 *             if value is null
-	 */
-	public Object execute(final Object value, final CsvContext context) {
-		validateInputNotNull(value, context);
-		
-		if( value.equals(token) ) {
-			return returnValue;
-		}
-		
-		return next.execute(value, context);
-	}
+public class Token extends CellProcessorAdaptor implements BoolCellProcessor, DateCellProcessor, DoubleCellProcessor, LongCellProcessor, StringCellProcessor {
+
+    private final Object returnValue;
+
+    private final Object token;
+
+    /**
+     * Constructs a new <tt>Token</tt> processor, which returns the supplied value if the token is encountered,
+     * otherwise it returns the input unchanged.
+     *
+     * @param token
+     *            the token
+     * @param returnValue
+     *            the value to return if the token is encountered
+     */
+    public Token(final Object token, final Object returnValue) {
+        super();
+        this.token = token;
+        this.returnValue = returnValue;
+    }
+
+    /**
+     * Constructs a new <tt>Token</tt> processor, which returns the supplied value if the token is encountered,
+     * otherwise it passes the input unchanged to the next processor in the chain.
+     *
+     * @param token
+     *            the token
+     * @param returnValue
+     *            the value to return if the token is encountered
+     * @param next
+     *            the next processor in the chain
+     * @throws NullPointerException
+     *             if next is null
+     */
+    public Token(final Object token, final Object returnValue, final CellProcessor next) {
+        super(next);
+        this.token = token;
+        this.returnValue = returnValue;
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @throws SuperCsvCellProcessorException
+     *             if value is null
+     */
+    public Object execute(final Object value, final CsvContext context) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

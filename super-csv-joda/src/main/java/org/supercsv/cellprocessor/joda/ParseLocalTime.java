@@ -24,7 +24,7 @@ import org.supercsv.cellprocessor.ift.CellProcessor;
 
 /**
  * Converts a String to a Joda LocalTime.
- * 
+ *
  * <p>
  * For constructors using DateTimeFormatter, refer to the following Joda
  * classes:
@@ -37,78 +37,75 @@ import org.supercsv.cellprocessor.ift.CellProcessor;
  * <p>
  * For constructors using date format Strings, refer to {@link DateTimeFormat}
  * for example formats.
- * 
+ *
  * @since 2.3.0
  * @author James Bassett
  */
-public class ParseLocalTime extends
-		AbstractJodaParsingProcessor<LocalTime> {
+public class ParseLocalTime extends AbstractJodaParsingProcessor<LocalTime> {
 
-	/**
-	 * Constructs a new <tt>ParseLocalTime</tt> processor, which parses a
-	 * String as a Joda LocalTime.
-	 */
-	public ParseLocalTime() {
-	}
+    /**
+     * Constructs a new <tt>ParseLocalTime</tt> processor, which parses a
+     * String as a Joda LocalTime.
+     */
+    public ParseLocalTime() {
+    }
 
-	/**
-	 * Constructs a new <tt>ParseLocalTime</tt> processor, which parses a
-	 * String as a Joda LocalTime, then calls the next processor in the
-	 * chain.
-	 * 
-	 * @param next
-	 *            the next processor in the chain
-	 * @throws NullPointerException
-	 *             if next is null
-	 */
-	public ParseLocalTime(final CellProcessor next) {
-		super(next);
-	}
+    /**
+     * Constructs a new <tt>ParseLocalTime</tt> processor, which parses a
+     * String as a Joda LocalTime, then calls the next processor in the
+     * chain.
+     *
+     * @param next
+     *            the next processor in the chain
+     * @throws NullPointerException
+     *             if next is null
+     */
+    public ParseLocalTime(final CellProcessor next) {
+        super(next);
+    }
 
-	/**
-	 * Constructs a new <tt>ParseLocalTime</tt> processor, which parses a
-	 * String as a Joda LocalTime using the supplied formatter.
-	 * 
-	 * @param formatter
-	 *            the formatter used for parsing
-	 * @throws NullPointerException
-	 *             if formatter is null
-	 */
-	public ParseLocalTime(final DateTimeFormatter formatter) {
-		super(formatter);
-	}
+    /**
+     * Constructs a new <tt>ParseLocalTime</tt> processor, which parses a
+     * String as a Joda LocalTime using the supplied formatter.
+     *
+     * @param formatter
+     *            the formatter used for parsing
+     * @throws NullPointerException
+     *             if formatter is null
+     */
+    public ParseLocalTime(final DateTimeFormatter formatter) {
+        super(formatter);
+    }
 
-	/**
-	 * Constructs a new <tt>ParseLocalTime</tt> processor, which parses a
-	 * String as a Joda LocalTime using the supplied formatter, then calls
-	 * the next processor in the chain.
-	 * 
-	 * @param formatter
-	 *            the formatter used for parsing
-	 * @param next
-	 *            the next processor in the chain
-	 * @throws NullPointerException
-	 *             if formatter or next is null
-	 */
-	public ParseLocalTime(final DateTimeFormatter formatter,
-			final CellProcessor next) {
-		super(formatter, next);
-	}
+    /**
+     * Constructs a new <tt>ParseLocalTime</tt> processor, which parses a
+     * String as a Joda LocalTime using the supplied formatter, then calls
+     * the next processor in the chain.
+     *
+     * @param formatter
+     *            the formatter used for parsing
+     * @param next
+     *            the next processor in the chain
+     * @throws NullPointerException
+     *             if formatter or next is null
+     */
+    public ParseLocalTime(final DateTimeFormatter formatter, final CellProcessor next) {
+        super(formatter, next);
+    }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	protected LocalTime parse(final String string) {
-		return LocalTime.parse(string);
-	}
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected LocalTime parse(final String string) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	protected LocalTime parse(final String string,
-			final DateTimeFormatter formatter) {
-		return LocalTime.parse(string, formatter);
-	}
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected LocalTime parse(final String string, final DateTimeFormatter formatter) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

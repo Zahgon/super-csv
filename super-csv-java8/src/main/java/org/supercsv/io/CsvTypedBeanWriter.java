@@ -44,44 +44,37 @@ public final class CsvTypedBeanWriter<T> implements ICsvTypedBeanWriter<T> {
     }
 
     @Override
-    public void write(final Collection<T> beans,
-        final Collection<Function<T, ?>> extractors) throws IOException {
-        for (final T row : beans) {
-            this.writer.write(
-                extractors.stream()
-                    .map(extractor -> extractor.apply(row))
-                    .collect(Collectors.toList())
-            );
-        }
+    public void write(final Collection<T> beans, final Collection<Function<T, ?>> extractors) throws IOException {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public int getLineNumber() {
-        return this.writer.getLineNumber();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public int getRowNumber() {
-        return this.writer.getRowNumber();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public void writeComment(final String comment) throws IOException {
-        this.writer.writeComment(comment);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public void writeHeader(final String... header) throws IOException {
-        this.writer.writeHeader(header);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public void close() throws IOException {
-        this.writer.close();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public void flush() throws IOException {
-        this.writer.flush();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

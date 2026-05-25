@@ -35,51 +35,46 @@ import org.supercsv.util.CsvContext;
  * other processors such as <code>
  * new ConvertNullTo("\"\"", new Truncate(3))
  * </code>
- * 
+ *
  * @since 1.20
  * @author Kasper B. Graversen
  */
-public class ConvertNullTo extends CellProcessorAdaptor implements BoolCellProcessor, DateCellProcessor,
-	DoubleCellProcessor, LongCellProcessor, StringCellProcessor {
-	
-	private final Object returnValue;
-	
-	/**
-	 * Constructs a new <tt>ConvertNullTo</tt> processor, which returns a specified default value if the input is
-	 * <tt>null</tt>.
-	 * 
-	 * @param returnValue
-	 *            the value to return if the input is <tt>null</tt>
-	 */
-	public ConvertNullTo(final Object returnValue) {
-		super();
-		this.returnValue = returnValue;
-	}
-	
-	/**
-	 * Constructs a new <tt>ConvertNullTo</tt> processor, which returns a specified default value if the input is
-	 * <tt>null</tt>. If the input is not <tt>null</tt>, then the next processor is executed.
-	 * 
-	 * @param returnValue
-	 *            the value to return if the input is <tt>null</tt>
-	 * @param next
-	 *            the next <tt>CellProcessor</tt> in the chain
-	 * @throws NullPointerException
-	 *             if next is null
-	 */
-	public ConvertNullTo(final Object returnValue, final CellProcessor next) {
-		super(next);
-		this.returnValue = returnValue;
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	public Object execute(final Object value, final CsvContext context) {
-		if( value == null ) {
-			return returnValue;
-		}
-		
-		return next.execute(value, context);
-	}
+public class ConvertNullTo extends CellProcessorAdaptor implements BoolCellProcessor, DateCellProcessor, DoubleCellProcessor, LongCellProcessor, StringCellProcessor {
+
+    private final Object returnValue;
+
+    /**
+     * Constructs a new <tt>ConvertNullTo</tt> processor, which returns a specified default value if the input is
+     * <tt>null</tt>.
+     *
+     * @param returnValue
+     *            the value to return if the input is <tt>null</tt>
+     */
+    public ConvertNullTo(final Object returnValue) {
+        super();
+        this.returnValue = returnValue;
+    }
+
+    /**
+     * Constructs a new <tt>ConvertNullTo</tt> processor, which returns a specified default value if the input is
+     * <tt>null</tt>. If the input is not <tt>null</tt>, then the next processor is executed.
+     *
+     * @param returnValue
+     *            the value to return if the input is <tt>null</tt>
+     * @param next
+     *            the next <tt>CellProcessor</tt> in the chain
+     * @throws NullPointerException
+     *             if next is null
+     */
+    public ConvertNullTo(final Object returnValue, final CellProcessor next) {
+        super(next);
+        this.returnValue = returnValue;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public Object execute(final Object value, final CsvContext context) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

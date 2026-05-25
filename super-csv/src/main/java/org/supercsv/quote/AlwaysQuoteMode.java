@@ -20,23 +20,22 @@ import org.supercsv.util.CsvContext;
 
 /**
  * When using AlwaysQuoteMode surrounding quotes are always applied.
- * 
+ *
  * @author James Bassett
  * @since 2.1.0
  */
 public class AlwaysQuoteMode implements QuoteMode {
-	
-	/**
-	 * Constructs a new <tt>AlwaysQuoteMode</tt>.
-	 */
-	public AlwaysQuoteMode() {
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	public boolean quotesRequired(final String csvColumn, final CsvContext context, final CsvPreference preference) {
-		return true;
-	}
-	
+
+    /**
+     * Constructs a new <tt>AlwaysQuoteMode</tt>.
+     */
+    public AlwaysQuoteMode() {
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public boolean quotesRequired(final String csvColumn, final CsvContext context, final CsvPreference preference) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

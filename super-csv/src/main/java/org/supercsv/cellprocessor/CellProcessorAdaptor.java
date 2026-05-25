@@ -27,94 +27,90 @@ import org.supercsv.util.CsvContext;
 /**
  * Abstract super class containing shared behaviour of all cell processors. Processors are linked together in a linked
  * list. The end element of this list should always be an instance of <tt>NullObjectPattern</tt>.
- * 
+ *
  * @author Kasper B. Graversen
  * @author James Bassett
  */
 public abstract class CellProcessorAdaptor implements CellProcessor {
-	
-	/** the next processor in the chain */
-	protected final CellProcessor next;
-	
-	/**
-	 * Constructor used by CellProcessors to indicate that they are the last processor in the chain.
-	 */
-	protected CellProcessorAdaptor() {
-		super();
-		this.next = NullObjectPattern.INSTANCE;
-	}
-	
-	/**
-	 * Constructor used by CellProcessors that require <tt>CellProcessor</tt> chaining (further processing is required).
-	 * 
-	 * @param next
-	 *            the next <tt>CellProcessor</tt> in the chain
-	 * @throws NullPointerException
-	 *             if next is null
-	 */
-	protected CellProcessorAdaptor(final CellProcessor next) {
-		super();
-		if( next == null ) {
-			throw new NullPointerException("next CellProcessor should not be null");
-		}
-		this.next = next;
-	}
-	
-	/**
-	 * Checks that the input value is not <tt>null</tt>, throwing a <tt>NullInputException</tt> if it is. This method
-	 * should be called by all processors that need to ensure the input is not <tt>null</tt>.
-	 * 
-	 * @param value
-	 *            the input value
-	 * @param context
-	 *            the CSV context
-	 * @throws SuperCsvCellProcessorException
-	 *             if value is null
-	 * @since 2.0.0
-	 */
-	protected void validateInputNotNull(final Object value, final CsvContext context) {
-		if( value == null ) {
-			throw new SuperCsvCellProcessorException(
-				"this processor does not accept null input - if the column is optional then chain an Optional() processor before this one",
-				context, this);
-		}
-	}
-	
-	/**
-	 * Returns the CellProccessor's fully qualified class name.
-	 */
-	@Override
-	public String toString() {
-		return getClass().getName();
-	}
-	
-	/**
-	 * This is an implementation-specific processor and should only be used by the <tt>CellProcessorAdaptor</tt> class.
-	 * It is the implementation of the null object pattern (it does nothing - just returns the value!) and should always
-	 * be the last <tt>CellProcessor</tt> in the chain. It is implemented as a reusable singleton to avoid unnecessary
-	 * object creation.
-	 * 
-	 * @author Kasper B. Graversen
-	 * @author James Bassett
-	 */
-	private static final class NullObjectPattern implements BoolCellProcessor, DateCellProcessor, DoubleCellProcessor,
-		LongCellProcessor, StringCellProcessor {
-		
-		private static final NullObjectPattern INSTANCE = new NullObjectPattern();
-		
-		/*
+
+    /**
+     * the next processor in the chain
+     */
+    protected final CellProcessor next;
+
+    /**
+     * Constructor used by CellProcessors to indicate that they are the last processor in the chain.
+     */
+    protected CellProcessorAdaptor() {
+        super();
+        this.next = NullObjectPattern.INSTANCE;
+    }
+
+    /**
+     * Constructor used by CellProcessors that require <tt>CellProcessor</tt> chaining (further processing is required).
+     *
+     * @param next
+     *            the next <tt>CellProcessor</tt> in the chain
+     * @throws NullPointerException
+     *             if next is null
+     */
+    protected CellProcessorAdaptor(final CellProcessor next) {
+        super();
+        if (next == null) {
+            throw new NullPointerException("next CellProcessor should not be null");
+        }
+        this.next = next;
+    }
+
+    /**
+     * Checks that the input value is not <tt>null</tt>, throwing a <tt>NullInputException</tt> if it is. This method
+     * should be called by all processors that need to ensure the input is not <tt>null</tt>.
+     *
+     * @param value
+     *            the input value
+     * @param context
+     *            the CSV context
+     * @throws SuperCsvCellProcessorException
+     *             if value is null
+     * @since 2.0.0
+     */
+    protected void validateInputNotNull(final Object value, final CsvContext context) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    /**
+     * Returns the CellProccessor's fully qualified class name.
+     */
+    @Override
+    public String toString() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    /**
+     * This is an implementation-specific processor and should only be used by the <tt>CellProcessorAdaptor</tt> class.
+     * It is the implementation of the null object pattern (it does nothing - just returns the value!) and should always
+     * be the last <tt>CellProcessor</tt> in the chain. It is implemented as a reusable singleton to avoid unnecessary
+     * object creation.
+     *
+     * @author Kasper B. Graversen
+     * @author James Bassett
+     */
+    private static final class NullObjectPattern implements BoolCellProcessor, DateCellProcessor, DoubleCellProcessor, LongCellProcessor, StringCellProcessor {
+
+        private static final NullObjectPattern INSTANCE = new NullObjectPattern();
+
+        /*
 		 * This processor must not be instantiated outside of CellProcessorAdaptor.
 		 */
-		private NullObjectPattern() {
-			super();
-		}
-		
-		/**
-		 * {@inheritDoc}
-		 */
-		public Object execute(final Object value, final CsvContext context) {
-			return value;
-		}
-	}
-	
+        private NullObjectPattern() {
+            super();
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        public Object execute(final Object value, final CsvContext context) {
+            throw new UnsupportedOperationException("STUB: not implemented");
+        }
+    }
 }
